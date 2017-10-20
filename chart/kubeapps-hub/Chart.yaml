@@ -1,0 +1,11 @@
+apiVersion: v1
+name: kubeapps-hub
+description: KubeApps Hub is a search and discovery front end for Helm Charts Repositories.
+version: 0.4.9
+appVersion: v0.4.0
+home: https://github.com/kubeapps/hub
+sources:
+- https://github.com/kubeapps/hub
+maintainers:
+- name: prydonius
+  email: adnan@bitnami.com
