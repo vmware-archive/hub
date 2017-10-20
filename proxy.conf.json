@@ -1,0 +1,9 @@
+{
+  "/api/ratesvc": {
+    "target": "http://ratesvc:8080",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/ratesvc": ""
+    }
+  }
+}
