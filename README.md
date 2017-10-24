@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/kubeapps/hub.svg?style=svg)](https://circleci.com/gh/kubeapps/hub)
+
 # Monocular UI
 
 The UI is a web client for the [Monocular
