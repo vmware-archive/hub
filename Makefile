@@ -1,4 +1,4 @@
-IMAGE_REPO ?= bitnami/monocular-ui
+IMAGE_REPO ?= kubeapps/hub
 IMAGE_TAG ?= latest
 
 ifeq "$(VERSION)" ""
