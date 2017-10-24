@@ -5,5 +5,12 @@
     "pathRewrite": {
       "^/api/ratesvc": ""
     }
+  },
+  "/api": {
+    "target": "http://api:8081",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    }
   }
 }
