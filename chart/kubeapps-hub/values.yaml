@@ -123,6 +123,12 @@ ingress:
     ## Traefik ingress controller
     # traefik.frontend.rule.type: PathPrefixStrip
     # kubernetes.io/ingress.class: traefik
+  
+  ## Ingress labels
+  #
+  labels: {}
+    ## e.g. for PalmStoneGames kube-cert-manager
+    # stable.k8s.psg.io/kcm.class: default
 
   ## Ingress TLS configuration
   ## Secrets must be manually created in the namespace
