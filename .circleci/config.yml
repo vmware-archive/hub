@@ -7,7 +7,6 @@ jobs:
     docker:
       # specify the version
       - image: circleci/node:8.7
-    working_directory: /go/src/github.com/kubeapps/hub
     steps:
       - checkout
       - setup_remote_docker:
