@@ -6,30 +6,24 @@ jobs:
   build:
     docker:
       # specify the version
-      - image: circleci/golang:1.9
-    working_directory: /go/src/github.com/kubeapps/ratesvc
+      - image: circleci/node:8.7
+    working_directory: /go/src/github.com/kubeapps/hub
     steps:
       - checkout
       - setup_remote_docker:
           version: 17.07.0-ce
 
-      - run: go get -u github.com/golang/dep/cmd/dep
-      - run: dep ensure
-
-      - run: go build -v
-      - run: go test -v -race ./...
-    
-      - run: docker build -t kubeapps/ratesvc:latest .
+      - run: make docker-build
 
       - deploy:
           name: Publish Docker Image
           command: |
             if [[ "${CIRCLE_BRANCH}" == "master" || -n "${CIRCLE_TAG}" ]]; then
               if [[ -n "${CIRCLE_TAG}" ]]; then
-                docker tag kubeapps/ratesvc:latest kubeapps/ratesvc:${CIRCLE_TAG}
+                docker tag kubeapps/hub:latest kubeapps/hub:${CIRCLE_TAG}
               fi
               docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
-              docker push kubeapps/ratesvc
+              docker push kubeapps/hub
             fi
 workflows:
   version: 2
