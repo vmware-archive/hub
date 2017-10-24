@@ -12,7 +12,7 @@ jobs:
       - setup_remote_docker:
           version: 17.07.0-ce
 
-      - run: yarn global add @angular/cli@1.4.3 && ng set --global packageManager=yarn
+      - run: yarn global add @angular/cli@1.4.3 && echo "export PATH=$(yarn global bin):$PATH" >> $BASH_ENV
       - run: make docker-build
 
       - deploy:
