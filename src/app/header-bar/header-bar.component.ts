@@ -29,7 +29,6 @@ export class HeaderBarComponent implements OnInit {
   public openedMenu: boolean = false;
   // Config
 
-  appName: string;
   constructor(
     private router: Router,
     public config: ConfigService,
@@ -54,7 +53,6 @@ export class HeaderBarComponent implements OnInit {
       'search',
       this.sanitizer.bypassSecurityTrustResourceUrl('/assets/icons/search.svg')
     );
-    this.appName = this.config.appName;
 
     this.authService.loggedIn().subscribe(loggedIn => { this.loggedIn = loggedIn; });
 

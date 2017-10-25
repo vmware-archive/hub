@@ -22,6 +22,12 @@
     a {
       font-weight: bold;
     }
+
+    img {
+      width: 1em;
+      display: inline-block;
+      vertical-align: bottom;
+    }
   }
 
   &__maintainers {

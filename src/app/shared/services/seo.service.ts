@@ -8,12 +8,7 @@ import SeoData from '../seo.data';
 /* TODO, This is a mocked class. */
 @Injectable()
 export class SeoService {
-  // Current name of the application
-  appName: string = '';
-
-  constructor(private config: ConfigService, private metaService: MetaService) {
-    this.appName = config.appName;
-  }
+  constructor(private config: ConfigService, private metaService: MetaService) {}
 
   /**
    * Return the SEO data for the metaTags of the current page
@@ -25,11 +20,7 @@ export class SeoService {
     let match;
     Object.keys(metadata).forEach(key => {
       while ((match = regex.exec(metadata[key]))) {
-        if (match[1] === 'appName') {
-          metadata[key] = metadata[key].replace(match[0], this.appName);
-        } else {
-          metadata[key] = metadata[key].replace(match[0], data[match[1]]);
-        }
+        metadata[key] = metadata[key].replace(match[0], data[match[1]]);
       }
     });
 

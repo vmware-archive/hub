@@ -71,7 +71,6 @@ ui:
       memory: 128Mi
   # ui-config populate
   googleAnalyticsId: UA-XXXXXX-X
-  appName: Monocular
   # API served on same-domain at /api path using Nginx Ingress controller
   backendHostname: /api
   # e.g. API served on a different domain

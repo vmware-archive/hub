@@ -23,7 +23,6 @@ describe('AppComponent', () => {
       ],
       providers: [
         { provide: Angulartics2GoogleAnalytics },
-        { provide: ConfigService, useValue: { appName: 'appName' } }
       ]
     })
     .compileComponents();

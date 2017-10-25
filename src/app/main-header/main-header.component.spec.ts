@@ -15,7 +15,6 @@ describe('Component: MainHeader', () => {
         imports: [],
         providers: [
           { provide: Router },
-          { provide: ConfigService, useValue: { appName: 'app-name' } },
           { provide: MenuService }
         ]
       }).compileComponents();
