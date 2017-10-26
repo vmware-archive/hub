@@ -37,12 +37,6 @@
             Deployments
           </a>
         </li>
-        <li class="separator"></li>
-        <li>
-          <a class="reverse" href="https://github.com/kubernetes-helm/monocular/blob/master/docs/about.md" target="_blank">
-            About
-          </a>
-        </li>
         <li *ngIf="loggedIn && user.email" class="separator"></li>
         <li *ngIf="loggedIn && user.email">
           {{ user.email }}
