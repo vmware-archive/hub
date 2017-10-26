@@ -4,7 +4,8 @@ export class Star {
   stargazers_count: number;
   has_starred: boolean;
 
-  constructor() {
+  constructor(opts: any = {}) {
+    if (opts.id) this.id = opts.id;
     this.stargazers_count = 0;
   }
 }
