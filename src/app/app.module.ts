@@ -67,7 +67,7 @@ export function metaFactory(): MetaLoader {
   return new MetaStaticLoader({
     pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
     pageTitleSeparator: ' | ',
-    applicationName: 'Monocular',
+    applicationName: 'KubeApps Hub',
     defaults: {
       description: 'Discover & launch great Kubernetes-ready apps'
     }

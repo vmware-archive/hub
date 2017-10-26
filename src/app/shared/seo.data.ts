@@ -3,43 +3,43 @@
  */
 export default {
   index: {
-    title: '{ appName }: Discover & launch great Kubernetes-ready apps',
+    title: 'KubeApps Hub: Discover & launch great Kubernetes-ready apps',
     description:
-      '{ appName } is a platform for discovering & launching great Kubernetes-ready' +
+      'KubeApps Hub is a platform for discovering & launching great Kubernetes-ready' +
         'apps. Browse the catalog and deploy your applications in your Kubernetes cluster'
   },
   charts: {
-    title: 'Kubernetes-ready applications catalog | { appName }',
+    title: 'Kubernetes-ready applications catalog',
     description:
-      'Browse the { appName } catalog of Kubernetes-ready apps. Deploy all apps you need ' +
+      'Browse the KubeApps Hub catalog of Kubernetes-ready apps. Deploy all apps you need ' +
         'in your infrastructure or the cloud with a command using Helm Charts'
   },
   repoCharts: {
-    title: '{ repo } repository of Kubernetes-ready applications | { appName }',
+    title: '{ repo } repository of Kubernetes-ready applications',
     description:
-      'Browse the { appName } catalog of the { repo } repository of Kubernetes-ready apps. ' +
+      'Browse the KubeApps Hub catalog of the { repo } repository of Kubernetes-ready apps. ' +
         'Deploy all apps you need in your infrastructure or the cloud with a command using ' +
         'Helm Charts'
   },
   chartDetails: {
-    title: '{ name } for Kubernetes | { appName }',
+    title: '{ name } for Kubernetes',
     description: 'Deploy the latest { name } in Kubernetes. { description }'
   },
   chartDetailsWithVersion: {
-    title: '{ name } { version } for Kubernetes | { appName }',
+    title: '{ name } { version } for Kubernetes',
     description:
       'Deploy the { name } { version } in Kubernetes. { description }'
   },
   deployments: {
-    title: 'Manage Deployments in Kubernetes | { appName }',
+    title: 'Manage Deployments in Kubernetes',
     description: 'Browse, edit or create deployments in Kubernetes.'
   },
   deploymentDetails: {
-    title: '{ name } in Kubernetes | { appName }',
+    title: '{ name } in Kubernetes',
     description: 'Deployment { name } in Kubernetes. { description }'
   },
   repositories: {
-    title: 'Repositories of Kubernetes-ready applications | { appName }',
+    title: 'Repositories of Kubernetes-ready applications',
     description: 'Manage repositories of helm charts'
   },
 };

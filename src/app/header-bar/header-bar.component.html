@@ -2,7 +2,7 @@
   <div class="header-bar__content">
     <div class="header-bar__logo">
       <h1>
-        <a href="/" routerLink="/" class="reverse">{{ appName }}</a>
+        <a href="/" routerLink="/" class="reverse">KubeApps Hub</a>
       </h1>
     </div>
     <nav class="header-bar__navigation">
@@ -20,9 +20,10 @@
           </a>
         </li>
         <li *ngIf="!loggedIn" class="separator"></li>
-        <li *ngIf="!loggedIn">
+        <li *ngIf="!loggedIn" class="header-bar__login">
           <a class="reverse" href="{{config.backendHostname}}/auth">
-            Login with GitHub
+            <mat-icon svgIcon="github"></mat-icon>
+            <span>Login with GitHub</span>
           </a>
         </li>
         <li *ngIf="loggedIn && config.releasesEnabled" class="separator"></li>
@@ -35,12 +36,6 @@
         <li *ngIf="loggedIn && config.releasesEnabled" routerLink="/deployments" routerLinkActive="active">
           <a class="reverse">
             Deployments
-          </a>
-        </li>
-        <li class="separator"></li>
-        <li>
-          <a class="reverse" href="https://github.com/kubernetes-helm/monocular/blob/master/docs/about.md" target="_blank">
-            About
           </a>
         </li>
         <li *ngIf="loggedIn && user.email" class="separator"></li>

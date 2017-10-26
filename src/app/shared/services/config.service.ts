@@ -5,7 +5,6 @@ export class ConfigService {
   // Configurable options
   // They can be overriden using assets/js/overrides.js
   backendHostname: string
-  appName: string
   releasesEnabled: boolean
   // EO configurable options
 
@@ -16,7 +15,6 @@ export class ConfigService {
     }
 
     this.backendHostname = overrides.backendHostname || "/api";
-    this.appName = overrides.appName || "Monocular";
     this.releasesEnabled = overrides.releasesEnabled;
   }
 }

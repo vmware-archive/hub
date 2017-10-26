@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MONOCULAR_VERSION } from '../../version';
 
 @Component({
   selector: 'app-footer',
@@ -7,5 +6,4 @@ import { MONOCULAR_VERSION } from '../../version';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  monocularVersion: string = MONOCULAR_VERSION;
 }

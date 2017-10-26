@@ -104,7 +104,6 @@ describe('ChartDetailsComponent', () => {
         ],
         providers: [
           { provide: ChartsService },
-          { provide: ConfigService, useValue: { appName: 'appName' } },
           { provide: SeoService },
           { provide: MenuService }
         ]
