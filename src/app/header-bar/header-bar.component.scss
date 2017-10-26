@@ -143,6 +143,24 @@ $header-bar-padding-small: 0 2em;
     }
   }
 
+  &__login {
+    margin-top: .5em;
+    background: rgba($background-white, 0.125);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+    padding: 0.3em 0.5em;
+
+    a {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    span {
+      margin-left: .3em;
+    }
+  }
+
   &__open {
     color: $text-white;
     margin-left: auto;
