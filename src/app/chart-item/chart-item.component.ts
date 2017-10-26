@@ -41,7 +41,7 @@ export class ChartItemComponent implements OnInit {
     );
     this.iconUrl = this.getIconUrl();
     if (!this.star) {
-      this.star = new Star();
+      this.star = new Star({id: this.chart.id});
     }
   }
 

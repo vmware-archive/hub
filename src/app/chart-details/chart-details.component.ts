@@ -46,6 +46,7 @@ export class ChartDetailsComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       let repo = params['repo'];
       let chartName = params['chartName'];
+      let chartId = `${repo}/${chartName}`;
       this.chartsService.getChart(repo, chartName).subscribe(chart => {
         this.loading = false;
         this.chart = chart;
@@ -61,7 +62,7 @@ export class ChartDetailsComponent implements OnInit {
           });
         this.iconUrl = this.getIconUrl();
       });
-      this.rateService.getStars().subscribe(stars => this.star = stars[`${repo}/${chartName}`] || new Star());
+      this.rateService.getStars().subscribe(stars => this.star = stars[chartId] || new Star({id: chartId}));
     });
   }
 
