@@ -68,16 +68,7 @@ export class ChartItemComponent implements OnInit {
 
   toggleStarred(e: any) {
     e.stopPropagation();
-    let was_starred = this.star.has_starred;
-    let stargazers_count = this.star.stargazers_count;
-    if (was_starred) {
-      this.star.stargazers_count = stargazers_count - 1;
-      this.rateService.unstarChart(this.chart.id).subscribe();
-    } else {
-      this.star.stargazers_count = stargazers_count + 1;
-      this.rateService.starChart(this.chart.id).subscribe();
-    }
-    this.star.has_starred = !was_starred;
+    this.rateService.toggleStar(this.star);
     return false;
   }
 }

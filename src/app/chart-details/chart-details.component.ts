@@ -31,7 +31,7 @@ export class ChartDetailsComponent implements OnInit {
     private seo: SeoService,
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    private rateSvc: RateService,
+    public rateService: RateService,
   ) {}
 
   ngOnInit() {
@@ -61,7 +61,7 @@ export class ChartDetailsComponent implements OnInit {
           });
         this.iconUrl = this.getIconUrl();
       });
-      this.rateSvc.getStars().subscribe(stars => this.star = stars[`${repo}/${chartName}`] || new Star());
+      this.rateService.getStars().subscribe(stars => this.star = stars[`${repo}/${chartName}`] || new Star());
     });
   }
 
@@ -97,18 +97,5 @@ export class ChartDetailsComponent implements OnInit {
     } else {
       return '/assets/images/placeholder.png';
     }
-  }
-
-  toggleStarred() {
-    let was_starred = this.star.has_starred;
-    let stargazers_count = this.star.stargazers_count;
-    if (was_starred) {
-      this.star.stargazers_count = stargazers_count - 1;
-      this.rateSvc.unstarChart(this.chart.id).subscribe();
-    } else {
-      this.star.stargazers_count = stargazers_count + 1;
-      this.rateSvc.starChart(this.chart.id).subscribe();
-    }
-    this.star.has_starred = !was_starred;
   }
 }

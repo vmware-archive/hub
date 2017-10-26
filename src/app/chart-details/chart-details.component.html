@@ -14,7 +14,7 @@
           <div class="chart-details__header__text">
             <h1>
               {{ chart.attributes.name }}
-              <button class="chart-details__header__stargazers" type="button" mat-raised-button (click)="toggleStarred()">
+              <button class="chart-details__header__stargazers" type="button" mat-raised-button (click)="rateService.toggleStar(star)">
                 <mat-icon *ngIf="star.has_starred" svgIcon="star"></mat-icon>
                 <mat-icon *ngIf="!star.has_starred" svgIcon="star-border"></mat-icon>
                 {{ star.stargazers_count }} stars

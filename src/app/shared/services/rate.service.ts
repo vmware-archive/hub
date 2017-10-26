@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
 import { CookieService } from 'ngx-cookie';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/switchMap';
@@ -20,6 +21,7 @@ export class RateService {
     private config: ConfigService,
     private cookieService: CookieService,
     private router: Router,
+    private snackBar: MatSnackBar,
   ) {
     this.hostname = config.backendHostname;
   }
@@ -33,27 +35,30 @@ export class RateService {
     return this.http.get(`/api/ratesvc/v1/stars`)
       .flatMap(this.extractData)
       .reduce((m, s: Star) => { m[s.id] = s; return m; }, {})
-      .catch(this.handleError);
+      .catch((e, c) => { return this.handleError(e); });
+  }
+
+  toggleStar(s: Star): void {
+    let was_starred = s.has_starred;
+    let stargazers_count = s.stargazers_count;
+    s.has_starred = !was_starred;
+    s.stargazers_count = s.has_starred ? stargazers_count + 1 : stargazers_count - 1;
+
+    this.updateStar(s).subscribe(null, (error) => {
+      // Reset star on error
+      s.has_starred = was_starred;
+      s.stargazers_count = stargazers_count;
+    });
   }
 
   /**
-   * Star a chart
+   * Update a Star
    * 
    * @return {Observable} An observable response
    */
-  starChart(chartid: string): Observable<Response> {
-    return this.http.put(`/api/ratesvc/v1/stars`, {id: chartid, has_starred: true})
-      .catch(this.handleError);
-  }
-
-  /**
-   * Unstar a chart
-   * 
-   * @return {Observable} An observable response
-   */
-  unstarChart(chartid: string): Observable<Response> {
-    return this.http.put(`/api/ratesvc/v1/stars`, {id: chartid, has_starred: false})
-      .catch(this.handleError);
+  updateStar(s: Star): Observable<Response> {
+    return this.http.put(`/api/ratesvc/v1/stars`, s)
+      .catch((e, c) => { return this.handleError(e); });
   }
 
   private extractData(res: Response) {
@@ -62,10 +67,10 @@ export class RateService {
   }
 
   private handleError (error: any) {
-    let errorMsg = "cannot star charts when authentication is disabled";
-    if (error.status == 404) {
-      console.error(errorMsg);
-    }
+    let errorMsg = "You must be signed in to star a chart";
+    this.snackBar.open(errorMsg, "Login with GitHub", { duration: 1500 }).onAction().subscribe(() => {
+      window.location.href = "/api/auth";
+    });
     return Observable.throw(errorMsg);
   }
 }
