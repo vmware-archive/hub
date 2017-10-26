@@ -12,4 +12,6 @@ COPY rootfs /
 
 EXPOSE 4200 49152
 
+ENTRYPOINT ["/app-entrypoint.sh"]
+
 CMD ["ng", "serve", "--host", "0.0.0.0"]

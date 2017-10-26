@@ -1,5 +1,4 @@
 #!/bin/bash -e
-. /opt/bitnami/base/functions
 
 INIT_SEM=/tmp/initialized.sem
 PACKAGE_FILE=/app/package.json
@@ -16,9 +15,9 @@ dependencies_up_to_date() {
 
 if [ "$1" == ng -a "$2" == "serve" ]; then
   if ! dependencies_up_to_date; then
-    log "Installing/Updating Angular dependencies (npm)"
+    echo "Installing/Updating Angular dependencies (npm)"
     yarn
-    log "Dependencies updated"
+    echo "Dependencies updated"
   fi
 
   if ! fresh_container; then
@@ -31,10 +30,10 @@ if [ "$1" == ng -a "$2" == "serve" ]; then
     echo "                                                                       "
     echo "#########################################################################"
   else
-    log "Initialization finished"
+    echo "Initialization finished"
   fi
 
   touch $INIT_SEM
 fi
 
-exec tini -- "$@"
+exec "$@"
