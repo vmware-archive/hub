@@ -82,7 +82,7 @@ $icon-height: 150px;
     margin: auto;
     display: flex;
     flex-direction: column-reverse;
-    padding: 0 2em 2em 2em;
+    padding: 0 2em;
   }
 
   @include mappy-bp(medium) {

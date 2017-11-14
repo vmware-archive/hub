@@ -1,0 +1,58 @@
+// Import your custom theme
+@import '../../../theme.scss';
+
+.chart-details-comments {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+  padding: 1em;
+  color: $layout-text;
+  background: $layout-light;
+
+  h2 {
+    margin: 0;
+  }
+
+  form {
+    margin-top: 1em;
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .comment-item {
+    overflow: hidden;
+
+    &-content {
+      width: 100%;
+      color: $layout-text;
+      margin-top: 1em;
+      border-top: 1px solid $border-color;
+    }
+
+    &-author {
+      position: relative;
+      margin: 1em 0;
+      color: lighten($layout-text, 40%);
+
+      img {
+        height: 48px;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      span {
+        margin-left: 0.3em;
+        color: $color-base;
+      }
+    }
+
+    &-text {
+      width: 100%;
+    }
+  }
+
+  .comments-list__empty {
+    margin: 0.5em 0 0 0;
+    color: lighten($layout-text, 50%);
+  }
+}

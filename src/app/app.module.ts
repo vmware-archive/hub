@@ -30,6 +30,7 @@ import { DialogsService } from './shared/services/dialogs.service';
 import { SeoService } from './shared/services/seo.service';
 import { AuthService } from './shared/services/auth.service';
 import { RateService } from './shared/services/rate.service';
+import { CommentsService } from './shared/services/comments.service';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ import { ChartDetailsComponent } from './chart-details/chart-details.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { ChartDetailsUsageComponent } from './chart-details/chart-details-usage/chart-details-usage.component';
 import { ChartDetailsReadmeComponent } from './chart-details/chart-details-readme/chart-details-readme.component';
+import { ChartDetailsCommentsComponent } from './chart-details/chart-details-comments/chart-details-comments.component';
 import { PanelComponent } from './panel/panel.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -105,6 +107,7 @@ export function metaFactory(): MetaLoader {
     DeploymentResourceComponent,
     ListItemComponent,
     ListFiltersComponent,
+    ChartDetailsCommentsComponent,
   ],
   imports: [
     MatIconModule,
@@ -142,6 +145,7 @@ export function metaFactory(): MetaLoader {
     DialogsService,
     AuthService,
     RateService,
+    CommentsService,
   ],
   entryComponents: [
     ConfirmDialog,

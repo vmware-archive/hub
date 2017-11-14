@@ -26,7 +26,7 @@ $chart-item-logo-width: 80px;
 
     &__stargazers {
       margin-left: 5px;
-      background: darken($background-light, 10%);
+      border: 1px solid darken($background-light, 10%);
       padding: 2px 4px;
       border-radius: 4px;
 
