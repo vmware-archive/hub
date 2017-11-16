@@ -62,6 +62,7 @@ import { ConfirmDialog } from './confirm-dialog/confirm-dialog.component';
 import { DeploymentResourceComponent } from './deployment/deployment-resource/deployment-resource.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { ListFiltersComponent } from './list-filters/list-filters.component';
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 
 import 'hammerjs';
 
@@ -108,6 +109,7 @@ export function metaFactory(): MetaLoader {
     ListItemComponent,
     ListFiltersComponent,
     ChartDetailsCommentsComponent,
+    TermsOfServiceComponent,
   ],
   imports: [
     MatIconModule,

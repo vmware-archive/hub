@@ -42,4 +42,8 @@ export default {
     title: 'Repositories of Kubernetes-ready applications',
     description: 'Manage repositories of helm charts'
   },
+  termsofservice: {
+    title: 'Terms of Service',
+    description: 'Terms of Service for KubeApps Hub'
+  },
 };
