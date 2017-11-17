@@ -8,6 +8,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { DeploymentsComponent } from './deployments/deployments.component';
 import { DeploymentComponent } from './deployment/deployment.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 
 const appRoutes: Routes = [
   {
@@ -58,6 +59,15 @@ const appRoutes: Routes = [
     component: ChartDetailsComponent
   },
   {
+    path: 'terms-of-service',
+    component: TermsOfServiceComponent,
+    data: {
+      meta: {
+        title: 'Terms of Service'
+      }
+    }
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
     data: {
@@ -65,7 +75,7 @@ const appRoutes: Routes = [
         title: 'Not Found'
       }
     }
-  }
+  },
 ];
 
 export const appRoutingProviders: any[] = [
