@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CommentsService } from '../../shared/services/comments.service';
 import { Comment } from '../../shared/models/comment';
+import { MatDialogRef, MatDialog, MatDialogConfig, MatIconRegistry, MatSnackBar } from '@angular/material';
+import { DialogsService } from '../../shared/services/dialogs.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie';
 import { AuthService } from '../../shared/services/auth.service';
 
@@ -19,11 +22,20 @@ export class ChartDetailsCommentsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private commentsService: CommentsService,
+    private mdIconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+    private dialogsService: DialogsService,
+    public snackBar: MatSnackBar,
     private cookieService: CookieService,
     private authService: AuthService,
   ) {}
 
   ngOnInit() {
+    this.mdIconRegistry.addSvgIcon(
+      'delete',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/assets/icons/delete.svg')
+    );
+
     this.authService.loggedIn().subscribe(loggedIn => { this.loggedIn = loggedIn; });
     let userClaims = this.cookieService.get("ka_claims");
     if (userClaims) {
@@ -47,8 +59,35 @@ export class ChartDetailsCommentsComponent implements OnInit {
       let repo = params['repo'];
       let chartName = params['chartName'];
       this.commentsService.createComment(repo, chartName, this.comment).subscribe(comment => {
-        this.comments.unshift(comment);
+        this.getComments();
         this.comment.text = "";
+      });
+    });
+  }
+
+  deleteComment(commentID: string) {
+    this.route.params.forEach((params: Params) => {
+      let repo = params['repo'];
+      let chartName = params['chartName'];
+
+      this.dialogsService.confirm(
+        `Delete comment`,
+        'Are you sure you want to delete this comment?',
+        'Yes',
+        'Cancel'
+      ).subscribe(res => {
+        if (res) {
+          this.commentsService.deleteComment(repo, chartName, commentID).subscribe(comment => {
+            this.getComments()
+          },
+          error => {
+            this.snackBar.open(
+              `Error deleting the comment, please try later`,
+              'close',
+              { duration: 5000 }
+            );
+          });
+        }
       });
     });
   }
