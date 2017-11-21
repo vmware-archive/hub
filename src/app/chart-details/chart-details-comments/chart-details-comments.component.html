@@ -5,7 +5,7 @@
       <textarea matInput
         #commentCharacterCount
         name="comment-text"
-        placeholder="You're commenting as {{ user.name }}"
+        placeholder="You're commenting as {{ commentAuthorName(user) }}"
         required
         maxLength="1024"
         matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
@@ -20,7 +20,7 @@
       <div class="comment-item-content-header">
         <div class="comment-item-content-header-author">
           <img src="{{ comment.author.avatar_url }}">
-          <span>{{ comment.author.name }}</span> / {{ comment.created_at | date: 'd MMM y' }}
+          <span>{{ commentAuthorName(comment.author) }}</span> / {{ comment.created_at | date: 'd MMM y' }}
         </div>
         <div class="comment-item-content-header-panel">
           <span *ngIf='loggedIn && (comment.author.id === user.id)' (click)="deleteComment(comment.id)">

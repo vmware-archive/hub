@@ -92,6 +92,10 @@ export class ChartDetailsCommentsComponent implements OnInit {
     });
   }
 
+  commentAuthorName(user: any) {
+    return (user.name == "") ? "Anonymous" : user.name;
+  }
+
   sortByCreated(a: Comment, b: Comment) {
     if (a.created_at < b.created_at) {
       return -1;
