@@ -12,5 +12,9 @@
     "pathRewrite": {
       "^/api": ""
     }
+  },
+  "/auth": {
+    "target": "http://auth:8080",
+    "secure": false
   }
 }

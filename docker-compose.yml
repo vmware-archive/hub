@@ -19,8 +19,6 @@ services:
       - monocular-data:/root/monocular
     environment:
       - ENVIRONMENT=development
-      - MONOCULAR_AUTH_GITHUB_CLIENT_ID=${MONOCULAR_AUTH_GITHUB_CLIENT_ID}
-      - MONOCULAR_AUTH_GITHUB_CLIENT_SECRET=${MONOCULAR_AUTH_GITHUB_CLIENT_SECRET}
       - MONOCULAR_AUTH_SIGNING_KEY=secret
   ratesvc:
     image: kubeapps/ratesvc:latest
@@ -28,11 +26,22 @@ services:
     - JWT_KEY=secret
     command:
     - /ratesvc
-    - -mongo-host
-    - mongodb
-    - -mongo-database
-    - ratesvc
+    - --mongo-host=mongodb
+    - --mongo-database=ratesvc
   mongodb:
     image: bitnami/mongodb:3
+  auth:
+    image: kubeapps/oauth2-bitnami:latest
+    command:
+    - /oauth2-bitnami
+    - --jwt-key=secret
+    - --client-id=$AUTH_CLIENT_ID
+    - --client-secret=$AUTH_CLIENT_SECRET
+    - --mongo-host=mongodb
+    - --mongo-database=users
+    environment:
+    - AUTH_CLIENT_ID=${AUTH_CLIENT_ID}
+    - AUTH_CLIENT_SECRET=${AUTH_CLIENT_SECRET}
+    - AUTH_SIGNING_KEY=secret
 volumes:
   monocular-data:

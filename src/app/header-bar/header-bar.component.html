@@ -21,9 +21,8 @@
         </li>
         <li *ngIf="!loggedIn" class="separator"></li>
         <li *ngIf="!loggedIn" class="header-bar__login">
-          <a class="reverse" href="{{config.backendHostname}}/auth">
-            <mat-icon svgIcon="github"></mat-icon>
-            <span>Login with GitHub</span>
+          <a class="reverse" href="/auth">
+            <span>Login with Bitnami</span>
           </a>
         </li>
         <li *ngIf="loggedIn && config.releasesEnabled" class="separator"></li>

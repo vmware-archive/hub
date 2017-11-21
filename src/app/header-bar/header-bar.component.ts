@@ -53,10 +53,6 @@ export class HeaderBarComponent implements OnInit {
       'search',
       this.sanitizer.bypassSecurityTrustResourceUrl('/assets/icons/search.svg')
     );
-    this.mdIconRegistry.addSvgIcon(
-      'github',
-      this.sanitizer.bypassSecurityTrustResourceUrl('/assets/icons/github.svg')
-    );
 
     this.authService.loggedIn().subscribe(loggedIn => { this.loggedIn = loggedIn; });
 
