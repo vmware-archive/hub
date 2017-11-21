@@ -38,6 +38,12 @@ export class CommentsService {
       .catch(this.handleError);
   }
 
+  deleteComment(repo: string, chartName: string, id: string): Observable<Comment> {
+    return this.http.delete(`/api/ratesvc/v1/comments/${repo}/${chartName}/${id}`, {withCredentials: true})
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body.data || { };

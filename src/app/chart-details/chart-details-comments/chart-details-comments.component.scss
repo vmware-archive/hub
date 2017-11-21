@@ -28,26 +28,43 @@
       color: $layout-text;
       margin-top: 1em;
       border-top: 1px solid $border-color;
-    }
 
-    &-author {
-      position: relative;
-      margin: 1em 0;
-      color: lighten($layout-text, 40%);
+      &-header {
+        display: flex;
+        margin: 1em 0;
 
-      img {
-        height: 48px;
-        border-radius: 50%;
-        vertical-align: middle;
+        &-author {
+          position: relative;
+          width: 95%;
+          color: lighten($layout-text, 40%);
+
+          img {
+            height: 48px;
+            border-radius: 50%;
+            vertical-align: middle;
+          }
+
+          span {
+            margin-left: 0.3em;
+            color: $color-base;
+          }
+        }
+
+        &-panel {
+          mat-icon {
+            cursor: pointer;
+            color: lighten($layout-dark, 35%);
+          }
+
+          mat-icon:hover {
+            color: $layout-dark;
+          }
+        }
       }
-      span {
-        margin-left: 0.3em;
-        color: $color-base;
-      }
-    }
 
-    &-text {
-      width: 100%;
+      &-text {
+        width: 100%;
+      }
     }
   }
 
