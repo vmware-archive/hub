@@ -68,8 +68,8 @@ export class RateService {
 
   private handleError (error: any) {
     let errorMsg = "You must be signed in to star a chart";
-    this.snackBar.open(errorMsg, "Login with GitHub", { duration: 1500 }).onAction().subscribe(() => {
-      window.location.href = "/api/auth";
+    this.snackBar.open(errorMsg, "Login with Bitnami", { duration: 1500 }).onAction().subscribe(() => {
+      window.location.href = "/auth";
     });
     return Observable.throw(errorMsg);
   }
