@@ -26,10 +26,12 @@ services:
     - JWT_KEY=secret
     command:
     - /ratesvc
-    - --mongo-host=mongodb
+    - --mongo-url=mongodb://root:password123@mongodb
     - --mongo-database=ratesvc
   mongodb:
     image: bitnami/mongodb:3
+    environment:
+      - MONGODB_ROOT_PASSWORD=password123
   auth:
     image: kubeapps/oauth2-bitnami:latest
     command:
@@ -37,7 +39,7 @@ services:
     - --jwt-key=secret
     - --client-id=$AUTH_CLIENT_ID
     - --client-secret=$AUTH_CLIENT_SECRET
-    - --mongo-host=mongodb
+    - --mongo-url=mongodb://root:password123@mongodb
     - --mongo-database=users
     environment:
     - AUTH_CLIENT_ID=${AUTH_CLIENT_ID}
