@@ -31,5 +31,5 @@ tillerPortForward: true
 cacheRefreshInterval: 3600
 
 mongodb:
-  host: mongodb:27017
+  url: mongodb://root:password123@mongodb:27017
   database: monocular
