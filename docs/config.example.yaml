@@ -31,5 +31,6 @@ tillerPortForward: true
 cacheRefreshInterval: 3600
 
 mongodb:
-  url: mongodb://root:password123@mongodb:27017
+  # Overridable with `--mongo-url` CLI option
+  url: mongodb
   database: monocular

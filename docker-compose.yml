@@ -20,6 +20,9 @@ services:
     environment:
       - ENVIRONMENT=development
       - MONOCULAR_AUTH_SIGNING_KEY=secret
+    command:
+    - monocular
+    - --mongo-url=mongodb://root:password123@mongodb
   ratesvc:
     image: kubeapps/ratesvc:latest
     environment:
