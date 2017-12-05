@@ -21,19 +21,17 @@ mat-tab-body {
     margin-bottom: 1.5em;
   }
 
-  .mat-input-element {
-    width: calc(100% - 5em);
+  &__group {
+    display: flex;
 
-    .mat-input-wrapper {
-      margin: 1em 0 .5em;
+    .mat-form-field {
+      flex: 1;
+      width: 100%;
     }
   }
 
-  .mat-tab-label {
-    min-width: auto !important;
-  }
   [mat-button] {
-    margin-left: 1em;
+    margin: 0 0 1.25em 1em;
     min-width: auto;
     width: 4em;
   }
