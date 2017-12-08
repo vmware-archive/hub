@@ -1,6 +1,6 @@
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { MenuService } from './shared/services/menu.service';
 import { ChartsService } from './shared/services/charts.service';
 import { ConfigService } from './shared/services/config.service';
@@ -41,6 +41,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.loggedIn().subscribe(loggedIn => { this.loggedIn = loggedIn; });
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0)
+    });
   }
 
   logout() {
