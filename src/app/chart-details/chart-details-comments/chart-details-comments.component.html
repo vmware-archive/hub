@@ -14,7 +14,8 @@
     </mat-form-field>
     <button color="primary" type="submit" mat-raised-button [disabled]="!commentForm.form.valid">Comment</button>
   </form>
-  <h3 *ngIf="!comments || !comments.length" class="comments-list__empty">There are no comments</h3>
+  <h5 *ngIf="!loggedIn" class="comments-list__loggedout"><a href="/auth">You must be signed in to comment.</a></h5>
+  <h5 *ngIf="loggedIn && (!comments || !comments.length)" class="comments-list__empty">Be the first to comment.</h5>
   <div class="comment-item" *ngFor="let comment of comments">
     <div class="comment-item-content">
       <div class="comment-item-content-header">
