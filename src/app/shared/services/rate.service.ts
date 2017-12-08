@@ -68,7 +68,7 @@ export class RateService {
 
   private handleError (error: any) {
     let errorMsg = "You must be signed in to star a chart";
-    this.snackBar.open(errorMsg, "Login / Sign Up", { duration: 1500 }).onAction().subscribe(() => {
+    this.snackBar.open(errorMsg, "Login / Sign Up", { duration: 5000 }).onAction().subscribe(() => {
       window.location.href = "/auth";
     });
     return Observable.throw(errorMsg);
