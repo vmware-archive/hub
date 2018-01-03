@@ -5,7 +5,6 @@ import { Comment } from '../../shared/models/comment';
 import { MatDialogRef, MatDialog, MatDialogConfig, MatIconRegistry, MatSnackBar } from '@angular/material';
 import { DialogsService } from '../../shared/services/dialogs.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CookieService } from 'ngx-cookie';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -26,7 +25,6 @@ export class ChartDetailsCommentsComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private dialogsService: DialogsService,
     public snackBar: MatSnackBar,
-    private cookieService: CookieService,
     private authService: AuthService,
   ) {}
 
@@ -37,12 +35,7 @@ export class ChartDetailsCommentsComponent implements OnInit {
     );
 
     this.authService.loggedIn().subscribe(loggedIn => { this.loggedIn = loggedIn; });
-    let userClaims = this.cookieService.get("ka_claims");
-    if (userClaims) {
-      this.user = JSON.parse(decodeURIComponent(atob(userClaims).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join('')));
-    }
+    this.user = this.authService.getUser();
     this.getComments();
   }
 

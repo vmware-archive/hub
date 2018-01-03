@@ -5,7 +5,6 @@ import { MenuService } from '../shared/services/menu.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
-import { CookieService } from 'ngx-cookie';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -35,7 +34,6 @@ export class HeaderBarComponent implements OnInit {
     private menuService: MenuService,
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    private cookieService: CookieService,
     private authService: AuthService,
   ) {}
 
@@ -55,13 +53,7 @@ export class HeaderBarComponent implements OnInit {
     );
 
     this.authService.loggedIn().subscribe(loggedIn => { this.loggedIn = loggedIn; });
-
-    let userClaims = this.cookieService.get("ka_claims");
-    if (userClaims) {
-      this.user = JSON.parse(decodeURIComponent(atob(userClaims).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join('')));
-    }
+    this.user = this.authService.getUser();
   }
 
   logout() {
