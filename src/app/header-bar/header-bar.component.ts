@@ -58,7 +58,9 @@ export class HeaderBarComponent implements OnInit {
 
     let userClaims = this.cookieService.get("ka_claims");
     if (userClaims) {
-      this.user = JSON.parse(atob(userClaims));
+      this.user = JSON.parse(decodeURIComponent(atob(userClaims).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join('')));
     }
   }
 

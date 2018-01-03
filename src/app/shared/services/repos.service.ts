@@ -31,7 +31,7 @@ export class ReposService {
                   .map(this.extractData)
                   .catch(this.handleError);
   }
-  
+
   /**
    * Create a repo
    *
