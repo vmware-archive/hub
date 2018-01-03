@@ -14,6 +14,7 @@ import { Http, Response } from '@angular/http';
 @Injectable()
 export class AuthService {
   hostname: string;
+  user: any = {};
 
   constructor(
     private http: Http,
@@ -25,8 +26,23 @@ export class AuthService {
   }
 
   /**
+   * Get the details of the logged in user
+   *
+   * @return {Observable} An observable object with the user info
+   */
+  getUser(): Observable<any> {
+    let userClaims = this.cookieService.get("ka_claims");
+    if (userClaims) {
+      // parse as unicode string (see: https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding#The_Unicode_Problem)
+      return JSON.parse(decodeURIComponent(atob(userClaims).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join('')));
+    }
+  }
+
+  /**
    * Check if logged in on the API server
-   * 
+   *
    * @return {Observable} An observable boolean that will be true if logged in or if auth is disabled
    */
   loggedIn(): Observable<boolean> {
