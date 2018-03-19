@@ -10,6 +10,7 @@ import { RateService } from '../shared/services/rate.service';
 })
 export class ChartListComponent implements OnInit {
   @Input() charts: Chart[];
+  @Input() maxColumns: Number = 4;
   stars: { [id: string]: Star } = {};
 
   constructor(private rateSvc: RateService) {}

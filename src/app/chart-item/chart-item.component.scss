@@ -1,74 +1,84 @@
 // Import your custom theme
 @import '../../theme.scss';
 
+// HEx
+@import '~@bitnami/hex/lib';
+
 // Vars
 $chart-item-content-height: 150px;
 $chart-item-logo-width: 80px;
 
-.chart-item {
+$card-icon-height: 72px;
 
-  &-logo {
-    max-height: 80%;
+.Card {
+  color: color('text');
+
+  &__inner {
+    width: 100%;
+    height: 100%;
   }
 
-  &-info {
+  &__icon {
+    display: flex;
+    height: calc(#{$card-icon-height} + 2em);
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-height: $card-icon-height;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
 
     &__title {
+      word-break: break-all;
+      flex: 1;
+      font-size: 1.1em;
+      font-weight: bold;
       margin: 0;
-      font-weight: 500;
-      cursor: pointer;
-      margin-bottom: 4px;
+    }
+
+    &__info {
+      margin: .15em 0 0 .625em;
+    }
+
+    &__repo {
+      background-color: color-level('iron', 700);
+      border-radius: 16px;
+      display: inline-block;
 
       a {
-        color: inherit;
+        color: color('white');
+      }
+
+      &.stable {
+        background-color: color('secondary');
+      }
+
+      &.incubator {
+        background-color: color('action');
       }
     }
 
     &__stargazers {
-      margin-left: 5px;
-      border: 1px solid darken($background-light, 10%);
-      padding: 2px 4px;
+      border: 1px solid color('iron');
       border-radius: 4px;
+      color: color('text');
 
       &:hover {
         background: $background-white;
       }
 
       .mat-icon {
-        vertical-align: bottom;
-        height: 20px;
-        width: 20px;
+        height: su(1);
+        vertical-align: middle;
+        position: relative;
+        top: -2px;
+        width: su(1);
       }
-    }
-
-    p {
-      margin: 0;
-    }
-
-    // Remove this when chips are ready:
-    // https://github.com/angular/material2/issues/120
-    &__repo {
-      color: mat-color($monocular-app-accent);
-      font-size: .8em;
-      padding: 2px 4px;
-      border-radius: 4px;
-
-      &:hover {
-        background: $background-white;
-      }
-
-      &.repo-incubator {
-        color: mat-color($monocular-app-warn, 600);
-      }
-
-      a {
-        color: inherit;
-      }
-    }
-
-    &__description {
-      margin: 1em;
     }
   }
-
 }
