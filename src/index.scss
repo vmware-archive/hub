@@ -1,6 +1,10 @@
 // Imports
 @import './theme.scss';
 
+// Import HEx dist files and helpers
+@import '~@bitnami/hex/dist/hex.css';
+@import '~@bitnami/hex/lib';
+
 /**
 * This css is executed before load the Angular application. It includes the
 * loader of the main page.

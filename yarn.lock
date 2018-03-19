@@ -171,6 +171,19 @@
   dependencies:
     tsickle "^0.21.0"
 
+"@bitnami/hex-core@^3.0.0-beta.5":
+  version "3.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@bitnami/hex-core/-/hex-core-3.0.0-beta.5.tgz#dd39e1aa77cd2f9eca7d73085ce2eefd4e525b09"
+  dependencies:
+    mappy-breakpoints "^0.2.3"
+
+"@bitnami/hex@^3.0.0-beta.5":
+  version "3.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@bitnami/hex/-/hex-3.0.0-beta.5.tgz#515a6405365c602e0416a9c0ad1474f462f52b30"
+  dependencies:
+    "@bitnami/hex-core" "^3.0.0-beta.5"
+    mappy-breakpoints "^0.2.3"
+
 "@ngtools/json-schema@1.1.0", "@ngtools/json-schema@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
