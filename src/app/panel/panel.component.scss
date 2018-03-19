@@ -1,5 +1,8 @@
 @import '../../theme.scss';
 
+// HEx
+@import '~@bitnami/hex/lib';
+
 .panel {
   padding: 2em;
 
@@ -14,8 +17,7 @@
   }
 
   &--border {
-    border-radius: $border-radius;
-    border: 1px solid darken($layout-light, 5);
+    border: 1px solid color('iron');
   }
 
   &__title {

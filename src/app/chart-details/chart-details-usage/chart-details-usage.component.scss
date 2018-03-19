@@ -1,6 +1,8 @@
 // Import your custom theme
 @import '../../../theme.scss';
 
+@import '~@bitnami/hex/lib';
+
 mat-tab-body {
   margin-top: 1em;
 }
@@ -12,32 +14,13 @@ mat-tab-body {
     margin: 0;
   }
 
-  &__label {
-    margin: 0 0 .1em;
-    font-size: 1em;
-  }
-
   &__repository {
     margin-bottom: 1.5em;
   }
 
-  &__group {
-    display: flex;
-
-    .mat-form-field {
-      flex: 1;
-      width: 100%;
-    }
-  }
-
-  [mat-button] {
-    margin: 0 0 1.25em 1em;
-    min-width: auto;
-    width: 4em;
-  }
-
   svg {
-    fill: mat-color($monocular-app-primary);
+    width: 1.3em;
+    vertical-align: middle;
   }
 
   p {

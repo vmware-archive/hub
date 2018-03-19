@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import * as markdown from 'marked';
 import { Chart } from '../../shared/models/chart';
 import { ChartsService } from '../../shared/services/charts.service';
@@ -7,7 +7,8 @@ import { ChartVersion } from '../../shared/models/chart-version';
 @Component({
   selector: 'app-chart-details-readme',
   templateUrl: './chart-details-readme.component.html',
-  styleUrls: ['./chart-details-readme.component.scss']
+  styleUrls: ['./chart-details-readme.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ChartDetailsReadmeComponent implements OnChanges {
   @Input() chart: Chart;
