@@ -1,7 +1,6 @@
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { MenuService } from './shared/services/menu.service';
 import { ChartsService } from './shared/services/charts.service';
 import { ConfigService } from './shared/services/config.service';
 import { SeoService } from './shared/services/seo.service';
@@ -11,11 +10,9 @@ import { AuthService } from './shared/services/auth.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [MenuService, ChartsService]
+  providers: [ChartsService]
 })
 export class AppComponent implements OnInit {
-  // Show the global menu
-  public showMenu: boolean = false;
   // Config
   public config;
   public loggedIn: boolean = false;
@@ -23,19 +20,10 @@ export class AppComponent implements OnInit {
   constructor(
     angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
     config: ConfigService,
-    private menuService: MenuService,
     private router: Router,
     private seo: SeoService,
     private authService: AuthService,
   ) {
-    menuService.menuOpen$.subscribe(show => {
-      this.showMenu = show;
-    });
-
-    // Hide menu when user changes the route
-    router.events.subscribe(() => {
-      menuService.hideMenu();
-    });
     this.config = config;
   }
 

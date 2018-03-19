@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ConfigService } from '../shared/services/config.service';
-import { MenuService } from '../shared/services/menu.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
@@ -31,11 +30,15 @@ export class HeaderBarComponent implements OnInit {
   constructor(
     private router: Router,
     public config: ConfigService,
-    private menuService: MenuService,
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private authService: AuthService,
-  ) {}
+  ) {
+    // Hide menu when user changes the route
+    router.events.subscribe(() => {
+      this.openedMenu = false;
+    });
+  }
 
   ngOnInit() {
     // Set the icon
@@ -74,9 +77,8 @@ export class HeaderBarComponent implements OnInit {
     }
   }
 
-  openMenu() {
+  toggleMenu() {
     // Open the menu
     this.openedMenu = !this.openedMenu;
-    this.menuService.toggleMenu();
   }
 }

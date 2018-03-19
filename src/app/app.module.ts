@@ -25,7 +25,6 @@ import { ChartsService } from './shared/services/charts.service';
 import { DeploymentsService } from './shared/services/deployments.service';
 import { ReposService } from './shared/services/repos.service';
 import { ConfigService } from './shared/services/config.service';
-import { MenuService } from './shared/services/menu.service';
 import { DialogsService } from './shared/services/dialogs.service';
 import { SeoService } from './shared/services/seo.service';
 import { AuthService } from './shared/services/auth.service';
@@ -46,7 +45,6 @@ import { ChartDetailsCommentsComponent } from './chart-details/chart-details-com
 import { PanelComponent } from './panel/panel.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { FooterComponent } from './footer/footer.component';
-import { FooterListComponent } from './footer-list/footer-list.component';
 import { ChartDetailsInfoComponent } from './chart-details/chart-details-info/chart-details-info.component';
 import { ChartDetailsVersionsComponent } from './chart-details/chart-details-versions/chart-details-versions.component';
 import { ChartsComponent } from './charts/charts.component';
@@ -93,7 +91,6 @@ export function metaFactory(): MetaLoader {
     MainHeaderComponent,
     TruncatePipe,
     FooterComponent,
-    FooterListComponent,
     ChartDetailsInfoComponent,
     ChartsComponent,
     LoaderComponent,
@@ -142,7 +139,6 @@ export function metaFactory(): MetaLoader {
     DeploymentsService,
     ReposService,
     ConfigService,
-    MenuService,
     SeoService,
     DialogsService,
     AuthService,
