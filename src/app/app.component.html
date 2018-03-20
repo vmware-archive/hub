@@ -1,34 +1,5 @@
 <!-- Routed views go here -->
-<div [ngClass]="{ 'App': true, 'App--openMenu': showMenu }">
-  <nav class="App__Menu">
-    <ul>
-      <li>
-        <a class="reverse" routerLink="/charts" routerLinkActive="active">
-          Charts
-        </a>
-      </li>
-      <li *ngIf="!loggedIn">
-        <a class="reverse" href="/auth">
-          Login / Sign Up
-        </a>
-      </li>
-      <li *ngIf="config.releasesEnabled">
-        <a class="reverse" routerLink="/repos" routerLinkActive="active">
-          Repositories
-        </a>
-      </li>
-      <li *ngIf="config.releasesEnabled">
-        <a class="reverse" routerLink="/deployments" routerLinkActive="active">
-          Deployments
-        </a>
-      </li>
-      <li *ngIf="loggedIn">
-        <a class="reverse" (click)="logout()" target="_blank">
-          Logout
-        </a>
-      </li>
-    </ul>
-  </nav>
+<div class="App">
   <div class="App__Wrap">
     <main class="App__Content">
       <router-outlet></router-outlet>

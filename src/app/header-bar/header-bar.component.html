@@ -1,4 +1,40 @@
-<header [ngClass]="{ 'header-bar': true, 'releases-enabled': config.releasesEnabled }">
+<div [ngClass]="{ 'header-bar': true, 'gradient-135-brand': !transparent, 'type-color-reverse': true, 'type-color-reverse-anchor-reset': true }">
+  <div class="container">
+    <header [ngClass]="{ 'header': true, 'header-open': openedMenu }">
+      <div class="header__logo">
+        <a href="/" routerLink="/" class="reverse">
+          <img alt="Kubeapps Hub logo" src="/assets/images/logo.svg"/>
+        </a>
+      </div>
+      <nav class="header__nav">
+        <button class="header__nav__hamburguer" aria-label="Menu" aria-haspopup="true" aria-expanded="false"
+          (click)="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+        <ul class="header__nav__menu" role="menubar">
+          <li routerLink="/charts" routerLinkActive="active">
+            <a class="header__nav__menu__item" role="menuitem" tabindex="0">Charts</a>
+          </li>
+        </ul>
+        <div class="header__nav__user">
+          <a *ngIf="!loggedIn" class="button button-accent button-small" href="/auth">
+            <span>Sign In</span>
+          </a>
+          <span *ngIf="loggedIn && user.email" class="margin-r-bigger">{{ user.email }}</span>
+          <a *ngIf="loggedIn && user.email" class="button button-small" (click)="logout()" target="_blank">
+            Sign out
+          </a>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+<!--
+
+<header [ngClass]="{ 'header-bar': true, 'releases-enabled': config.releasesEnabled, 'gradient-135-brand': !transparent, 'type-color-reverse-anchor-reset': true }">
   <div class="header-bar__content">
     <div class="header-bar__logo">
       <a href="/" routerLink="/" class="reverse">
@@ -25,18 +61,6 @@
             <span>Login / Sign Up</span>
           </a>
         </li>
-        <li *ngIf="loggedIn && config.releasesEnabled" class="separator"></li>
-        <li *ngIf="loggedIn && config.releasesEnabled" routerLink="/repos" routerLinkActive="active">
-          <a class="reverse">
-            Repositories
-          </a>
-        </li>
-        <li *ngIf="loggedIn && config.releasesEnabled" class="separator"></li>
-        <li *ngIf="loggedIn && config.releasesEnabled" routerLink="/deployments" routerLinkActive="active">
-          <a class="reverse">
-            Deployments
-          </a>
-        </li>
         <li *ngIf="loggedIn && user.email" class="separator"></li>
         <li *ngIf="loggedIn && user.email">
           {{ user.email }}
@@ -53,4 +77,4 @@
       </div>
     </nav>
   </div>
-</header>
+</header> -->

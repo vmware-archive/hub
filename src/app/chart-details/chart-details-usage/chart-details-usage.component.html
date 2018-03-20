@@ -1,45 +1,29 @@
 <app-panel class="chart-details-usage" [border]=true>
   <h1>Install</h1>
-  <mat-tab-group>
-    <mat-tab *ngIf="config.releasesEnabled" label="One Click installation">
-      <button color="primary" mat-raised-button
-       (click)="installDeployment(chart.id, currentVersion)"
-       *ngIf="!installing">
-        Install {{ chart.attributes.name }} v{{ currentVersion }}
+  <div *ngIf=!showRepoInstructions class="chart-details-usage__repository">
+    <label for="repoAddInstructions">Add {{ chart.attributes.repo.name }} repository</label>
+    <div class="input-group">
+      <input id="repoAddInstructions" readonly [value]=repoAddInstructions />
+      <button class="button" ngxClipboard [cbContent]="repoAddInstructions" (cbOnSuccess)="showSnackBar()"
+        angulartics2On="click" angularticsEvent="RepositoryCopy" angularticsCategory="{{ chart.id }}"
+        [angularticsProperties]="{ label: currentVersion }">
+        <mat-icon svgIcon="content-copy"></mat-icon>
       </button>
-      <p *ngIf="installing"><mat-progress-bar mode="indeterminate"></mat-progress-bar></p>
-    </mat-tab>
-    <mat-tab label="Helm CLI">
-      <div *ngIf=!showRepoInstructions class="chart-details-usage__repository">
-        <h2 class="chart-details-usage__label">Add {{ chart.attributes.repo.name }} repository</h2>
-        <div class="chart-details-usage__group">
-          <mat-form-field>
-            <input matInput floatingPlaceholder=false [value]=repoAddInstructions>
-          </mat-form-field>
-          <button mat-button ngxClipboard [cbContent]="repoAddInstructions" (cbOnSuccess)="showSnackBar()"
-            angulartics2On="click" angularticsEvent="RepositoryCopy" angularticsCategory="{{ chart.id }}"
-            [angularticsProperties]="{ label: currentVersion }">
-            <mat-icon svgIcon="content-copy"></mat-icon>
-          </button>
-        </div>
-      </div>
-      <div>
-        <h2 class="chart-details-usage__label">Install chart</h2>
-        <div class="chart-details-usage__group">
-          <mat-form-field>
-            <input matInput readonly floatingPlaceholder=false [value]=installInstructions>
-          </mat-form-field>
-          <button mat-button ngxClipboard [cbContent]="installInstructions" (cbOnSuccess)="showSnackBar()"
-            angulartics2On="click" angularticsEvent="ChartInstallationCopy"
-            angularticsCategory="{{ chart.id }}" [angularticsProperties]="{ label: currentVersion }">
-            <mat-icon svgIcon="content-copy"></mat-icon>
-          </button>
-        </div>
-      </div>
-      <p class="help-link">
-        <a href="https://github.com/kubernetes/helm/blob/master/docs/quickstart.md"
-         target="_blank" title="How to install Helm">Need Helm?</a>
-      </p>
-    </mat-tab>
-  </mat-tab-group>
+    </div>
+  </div>
+  <div>
+    <label for="installInstructions">Install chart</label>
+    <div class="input-group">
+      <input id="installInstructions" readonly [value]=installInstructions />
+      <button class="button" ngxClipboard [cbContent]="installInstructions" (cbOnSuccess)="showSnackBar()"
+        angulartics2On="click" angularticsEvent="ChartInstallationCopy"
+        angularticsCategory="{{ chart.id }}" [angularticsProperties]="{ label: currentVersion }">
+        <mat-icon svgIcon="content-copy"></mat-icon>
+      </button>
+    </div>
+  </div>
+  <p class="help-link">
+    <a href="https://github.com/kubernetes/helm/blob/master/docs/quickstart.md"
+      target="_blank" title="How to install Helm">Need Helm?</a>
+  </p>
 </app-panel>

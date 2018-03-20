@@ -6,7 +6,7 @@
   <app-loader [loading]="loading">
     <section class="chart-details" *ngIf="chart">
       <div class="chart-details__header">
-        <div class="chart-details__header__background"></div>
+        <div class="chart-details__header__background gradient-135-brand"></div>
         <div class="chart-details__header__content">
           <div class="chart-details__header__icon">
             <img alt="{{ chart.attributes.name }}'s logo" src="{{ iconUrl }}"/>
@@ -14,7 +14,7 @@
           <div class="chart-details__header__text">
             <h1>
               {{ chart.attributes.name }}
-              <button class="chart-details__header__stargazers" type="button" mat-raised-button (click)="rateService.toggleStar(star)">
+              <button class="chart-details__header__stargazers button" type="button" (click)="rateService.toggleStar(star)">
                 <mat-icon *ngIf="star.has_starred" svgIcon="star"></mat-icon>
                 <mat-icon *ngIf="!star.has_starred" svgIcon="star-border"></mat-icon>
                 {{ star.stargazers_count }} stars

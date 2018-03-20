@@ -1,18 +1,13 @@
 <div class="chart-details-comments">
   <h2>Comments</h2>
   <form *ngIf=loggedIn #commentForm="ngForm" (ngSubmit)="createComment()" >
-    <mat-form-field>
-      <textarea matInput
-        #commentCharacterCount
-        name="comment-text"
-        placeholder="You're commenting as {{ commentAuthorName(user) }}"
-        required
-        maxLength="1024"
-        matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
-        [(ngModel)]="comment.text"></textarea>
-        <mat-hint align="end" aria-live="polite">{{commentCharacterCount.value.length}} / 1024</mat-hint>
-    </mat-form-field>
-    <button color="primary" type="submit" mat-raised-button [disabled]="!commentForm.form.valid">Comment</button>
+    <textarea
+      name="comment-text"
+      placeholder="You're commenting as {{ commentAuthorName(user) }}"
+      required
+      maxLength="1024"
+      [(ngModel)]="comment.text"></textarea>
+    <button class="button button-action" type="submit" [disabled]="!commentForm.form.valid">Comment</button>
   </form>
   <h5 *ngIf="!loggedIn" class="comments-list__loggedout"><a href="/auth">You must be signed in to comment.</a></h5>
   <h5 *ngIf="loggedIn && (!comments || !comments.length)" class="comments-list__empty">Be the first to comment.</h5>

@@ -9,12 +9,11 @@ $icon-height: 150px;
   flex-direction: column;
 
   &__header {
-    margin-top: -80px;
+    margin-top: -90px;
     margin-bottom: 40px;
 
     &__background {
       height: $header-height;
-      background: $header-backgound-gradient;
     }
 
     &__content {
@@ -72,7 +71,14 @@ $icon-height: 150px;
     }
 
     &__stargazers {
-      margin-left: 1em;
+      font-size: .9rem;
+      margin: 0 0 .5em 1em;
+
+      mat-icon {
+        vertical-align: middle;
+        position: relative;
+        top: -.1em;
+      }
     }
   }
 

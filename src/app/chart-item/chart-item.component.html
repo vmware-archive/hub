@@ -1,25 +1,31 @@
-<app-list-item class="chart-item" [detailUrl]="goToDetailUrl()">
-  <img class="list-item-logo chart-item-logo" alt="{{ chart.attributes.name }}'s logo" src="{{ iconUrl }}"/>
-  <div class="list-item-info chart-item-info">
-    <h2 class="chart-item-info__title">
-      <a [href]="goToDetailUrl()" [routerLink]="goToDetailUrl()">
-        {{ chart.attributes.name }}</a>
-    </h2>
-    <p>
-      <span class="chart-item-info__version" *ngIf="showVersion && chart.relationships.latestChartVersion.data.app_version">
-        {{ chart.relationships.latestChartVersion.data.app_version }}</span>
-      <span class="chart-item-info__repo repo-{{chart.attributes.repo.name}}">
-        <a [href]="goToRepoUrl()" [routerLink]="goToRepoUrl()">
-          {{ chart.attributes.repo.name }}</a>
-      </span>
-      <span class="chart-item-info__stargazers" (click)="toggleStarred($event)">
-        <mat-icon *ngIf="star.has_starred" svgIcon="star"></mat-icon>
-        <mat-icon *ngIf="!star.has_starred" svgIcon="star-border"></mat-icon>
-        {{ star.stargazers_count }}
-      </span>
-    </p>
-    <div class="chart-item-info__description" *ngIf="showDescription">
-      {{ chart.attributes.description }}
-    </div>
+<article class="Card">
+  <div class="Card__inner bg-white elevation-1">
+    <a [href]="goToDetailUrl()" [routerLink]="goToDetailUrl()">
+      <div class="Card__icon bg-light text-c">
+        <img alt="{{ chart.attributes.name }}'s logo" src="{{ iconUrl }}"/>
+      </div>
+      <div class="Card__content padding-normal">
+        <div>
+          <h3 class="Card__content__title">
+            <a [href]="goToDetailUrl()" [routerLink]="goToDetailUrl()">
+                {{ chart.attributes.name }}</a>
+          </h3>
+          <span class="Card__content__stargazers type-small padding-v-tiny padding-h-small" (click)="toggleStarred($event)">
+              <mat-icon *ngIf="star.has_starred" svgIcon="star"></mat-icon>
+              <mat-icon *ngIf="!star.has_starred" svgIcon="star-border"></mat-icon>
+              {{ star.stargazers_count }}
+            </span>
+        </div>
+        <div class="Card__content__info text-r">
+          <p class="margin-reset type-color-light-blue" *ngIf="chart.relationships.latestChartVersion.data.app_version">
+            {{ chart.relationships.latestChartVersion.data.app_version }}
+          </p>
+          <span class="Card__content__repo {{chart.attributes.repo.name}} padding-tiny padding-h-normal type-small margin-t-small">
+            <a [href]="goToRepoUrl()" [routerLink]="goToRepoUrl()">
+                {{ chart.attributes.repo.name }}</a>
+          </span>
+        </div>
+      </div>
+    </a>
   </div>
-</app-list-item>
+</article>
