@@ -1,6 +1,6 @@
 <app-panel class="chart-details-usage" [border]=true>
   <h1>Install</h1>
-  <div *ngIf=!showRepoInstructions class="chart-details-usage__repository">
+  <div *ngIf="showRepoInstructions" class="chart-details-usage__repository">
     <label for="repoAddInstructions">Add {{ chart.attributes.repo.name }} repository</label>
     <div class="input-group">
       <input id="repoAddInstructions" readonly [value]=repoAddInstructions />
