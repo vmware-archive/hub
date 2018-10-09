@@ -24,13 +24,6 @@ export class ChartDetailsInfoComponent implements OnInit {
     return this.chart.attributes.sources || [];
   }
 
-  get sourceUrl(): string {
-    var chartSource = this.chart.attributes.repo.source;
-    if (!chartSource) return;
-
-    return urljoin(chartSource, this.chart.attributes.name);
-  }
-
   get maintainers(): Maintainer[] {
     return this.chart.attributes.maintainers || [];
   }
