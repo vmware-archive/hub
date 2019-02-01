@@ -49,7 +49,7 @@ To build a docker image locally:
 
 - `make docker-build`
 
-The image will be tagged as `bitnami/monocular-ui:latest` by default. Set `IMAGE_REPO` and `IMAGE_TAG` to override this.
+The image will be tagged as `kubeapps/hub:latest` by default. Set `IMAGE_REPO` and `IMAGE_TAG` to override this.
 
 ### Components tree
 
