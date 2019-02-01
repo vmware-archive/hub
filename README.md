@@ -22,7 +22,7 @@ Monocular UI requires a running instance of the Monocular backend.
 
 The easiest way to have a running multi-tier development environment is to use the the `docker-compose.yml` file placed at the project root directory.
 
-Refer to [the Developer Guide](../../docs/development.md) for more details.
+Refer to [the Developer Guide](https://github.com/kubeapps/hub/blob/master/docs/development.md) for more details.
 
 ### Stack
 
