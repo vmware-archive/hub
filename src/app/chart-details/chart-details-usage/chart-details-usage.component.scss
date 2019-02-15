@@ -23,12 +23,26 @@ mat-tab-body {
     vertical-align: middle;
   }
 
-  p {
-    &.help-link {
-      font-size: 0.8em;
-      text-align: center;
-      margin-top: 20px;
-      margin-bottom: 0;
-    }
+  .help-link {
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .kubeapps-promo {
+    background: #f3f3f3;
+    font-size: 14px;
+    padding: 1em;
+    margin-top: 2em;
+    text-align: center;
+  }
+
+  .kubeapps-logo {
+    display: block;
+    width: 120px;
+    display: block;
+    margin: 0 auto;
+    padding: 0 0 1em;
   }
 }

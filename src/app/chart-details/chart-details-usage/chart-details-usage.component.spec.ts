@@ -9,6 +9,9 @@ import { DeploymentsService } from '../../shared/services/deployments.service';
 import { DialogsService } from '../../shared/services/dialogs.service';
 
 describe('Component: ChartDetailsUsage', () => {
+
+  let component;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [],
@@ -21,10 +24,20 @@ describe('Component: ChartDetailsUsage', () => {
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
+
+    component = TestBed.createComponent(ChartDetailsUsageComponent);
   });
 
   it('should create an instance', () => {
-    let component = TestBed.createComponent(ChartDetailsUsageComponent);
     expect(component).toBeTruthy();
+  });
+
+  it('should contain a link to Kubeapps Github', () => {
+    const detailsElement: HTMLElement = component.nativeElement;
+    const kubeappsGithubAnchor = detailsElement
+      .querySelector(
+        'a[href="https://github.com/kubeapps/kubeapps/blob/master/docs/user/getting-started.md"]'
+      );
+    expect(kubeappsGithubAnchor).toBeDefined();
   });
 });
