@@ -1,7 +1,7 @@
 FROM bitnami/node:8
 
 # Install yarn
-RUN install_packages apt-transport-https && \
+RUN install_packages apt-transport-https gnupg && \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" >> /etc/apt/sources.list.d/yarn.list && \
   install_packages yarn
