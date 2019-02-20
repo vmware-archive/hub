@@ -30,18 +30,6 @@ export default {
     description:
       'Deploy the { name } { version } in Kubernetes. { description }'
   },
-  deployments: {
-    title: 'Manage Deployments in Kubernetes',
-    description: 'Browse, edit or create deployments in Kubernetes.'
-  },
-  deploymentDetails: {
-    title: '{ name } in Kubernetes',
-    description: 'Deployment { name } in Kubernetes. { description }'
-  },
-  repositories: {
-    title: 'Repositories of Kubernetes-ready applications',
-    description: 'Manage repositories of helm charts'
-  },
   termsofservice: {
     title: 'Terms of Service',
     description: 'Terms of Service for KubeApps Hub'
