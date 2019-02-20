@@ -5,7 +5,6 @@ export class ConfigService {
   // Configurable options
   // They can be overriden using assets/js/overrides.js
   backendHostname: string
-  releasesEnabled: boolean
   // EO configurable options
 
   constructor() {
@@ -15,6 +14,5 @@ export class ConfigService {
     }
 
     this.backendHostname = overrides.backendHostname || "/api";
-    this.releasesEnabled = overrides.releasesEnabled;
   }
 }

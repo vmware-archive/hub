@@ -3,7 +3,6 @@ import { Router, NavigationExtras } from '@angular/router';
 import { ConfigService } from '../shared/services/config.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({

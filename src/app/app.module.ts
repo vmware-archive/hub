@@ -22,7 +22,6 @@ import { TruncatePipe } from './shared/pipes/truncate.pipe';
 
 /* Services */
 import { ChartsService } from './shared/services/charts.service';
-import { DeploymentsService } from './shared/services/deployments.service';
 import { ReposService } from './shared/services/repos.service';
 import { ConfigService } from './shared/services/config.service';
 import { DialogsService } from './shared/services/dialogs.service';
@@ -48,14 +47,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ChartDetailsInfoComponent } from './chart-details/chart-details-info/chart-details-info.component';
 import { ChartDetailsVersionsComponent } from './chart-details/chart-details-versions/chart-details-versions.component';
 import { ChartsComponent } from './charts/charts.component';
-import { DeploymentsComponent } from './deployments/deployments.component';
-import { DeploymentNewComponent } from './deployment-new/deployment-new.component';
-import { DeploymentItemComponent } from './deployment-item/deployment-item.component';
-import { DeploymentComponent } from './deployment/deployment.component';
-import { DeploymentControlsComponent } from './deployment-controls/deployment-controls.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ConfirmDialog } from './confirm-dialog/confirm-dialog.component';
-import { DeploymentResourceComponent } from './deployment/deployment-resource/deployment-resource.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { ListFiltersComponent } from './list-filters/list-filters.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
@@ -92,13 +85,7 @@ export function metaFactory(): MetaLoader {
     ChartDetailsInfoComponent,
     ChartsComponent,
     LoaderComponent,
-    DeploymentControlsComponent,
-    DeploymentsComponent,
-    DeploymentNewComponent,
-    DeploymentItemComponent,
-    DeploymentComponent,
     ConfirmDialog,
-    DeploymentResourceComponent,
     ListItemComponent,
     ListFiltersComponent,
     ChartDetailsCommentsComponent,
@@ -132,7 +119,6 @@ export function metaFactory(): MetaLoader {
     MatDialog,
     appRoutingProviders,
     ChartsService,
-    DeploymentsService,
     ReposService,
     ConfigService,
     SeoService,
@@ -142,8 +128,6 @@ export function metaFactory(): MetaLoader {
     CommentsService,
   ],
   entryComponents: [
-    ConfirmDialog,
-    DeploymentNewComponent
   ],
   bootstrap: [AppComponent]
 })
