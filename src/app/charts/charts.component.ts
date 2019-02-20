@@ -5,7 +5,6 @@ import { Chart } from '../shared/models/chart';
 import { Repo, RepoAttributes } from '../shared/models/repo';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SeoService } from '../shared/services/seo.service';
-import { ConfigService } from '../shared/services/config.service';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -28,7 +27,7 @@ export class ChartsComponent implements OnInit {
     {
       title: 'Repository',
       onSelect: i => this.onSelectRepo(i),
-      items: [{ title: 'All', value: 'all', selected: true }]
+      items: [{ title: 'all', value: 'all', selected: true }]
     },
     {
       title: 'Order By',
@@ -45,14 +44,12 @@ export class ChartsComponent implements OnInit {
 
   // Repos
   repoName: string;
-  allRepo: Repo;
 
   constructor(
     private chartsService: ChartsService,
     private reposService: ReposService,
     private route: ActivatedRoute,
     private router: Router,
-    private config: ConfigService,
     private seo: SeoService,
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
@@ -71,10 +68,6 @@ export class ChartsComponent implements OnInit {
       'menu',
       this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/icons/menu.svg`)
     );
-    this.allRepo = new Repo();
-    this.allRepo.id = 'all';
-    this.allRepo.attributes = new RepoAttributes();
-    this.allRepo.attributes.name = 'All';
     this.route.queryParams.forEach((params: Params) => {
       this.searchTerm = params['q'] ? params['q'] : undefined;
       if (this.searchTerm) {
@@ -101,11 +94,12 @@ export class ChartsComponent implements OnInit {
 
   loadRepos(): void {
     this.reposService.getRepos().subscribe(repos => {
-      repos.splice(0, 0, this.allRepo);
+      // Ensure the "all" link is appended to the list of repos
+      repos = [{ name: 'all', url: '' }, ...repos ];
       this.filters[0].items = repos.map(r => ({
-        title: r.attributes.name,
-        value: r.id,
-        selected: this.repoName ? r.id == this.repoName : r.id == 'all'
+        title: r.name,
+        value: r.name,
+        selected: this.repoName ? r.name == this.repoName : r.name == 'all'
       }));
     });
   }

@@ -53,8 +53,6 @@ import { DeploymentNewComponent } from './deployment-new/deployment-new.componen
 import { DeploymentItemComponent } from './deployment-item/deployment-item.component';
 import { DeploymentComponent } from './deployment/deployment.component';
 import { DeploymentControlsComponent } from './deployment-controls/deployment-controls.component';
-import { RepositoriesComponent } from './repositories/repositories.component';
-import { RepositoryNewComponent } from './repository-new/repository-new.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ConfirmDialog } from './confirm-dialog/confirm-dialog.component';
 import { DeploymentResourceComponent } from './deployment/deployment-resource/deployment-resource.component';
@@ -99,8 +97,6 @@ export function metaFactory(): MetaLoader {
     DeploymentNewComponent,
     DeploymentItemComponent,
     DeploymentComponent,
-    RepositoriesComponent,
-    RepositoryNewComponent,
     ConfirmDialog,
     DeploymentResourceComponent,
     ListItemComponent,
@@ -147,7 +143,6 @@ export function metaFactory(): MetaLoader {
   ],
   entryComponents: [
     ConfirmDialog,
-    RepositoryNewComponent,
     DeploymentNewComponent
   ],
   bootstrap: [AppComponent]

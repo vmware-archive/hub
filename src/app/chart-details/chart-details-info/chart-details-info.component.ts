@@ -41,7 +41,7 @@ export class ChartDetailsInfoComponent implements OnInit {
   maintainerUrl(maintainer: Maintainer): string {
     // Use GitHub URL with maintainer name if this is an upstream Helm repo from
     // github.com/helm/charts (i.e. stable or incubator)
-    if (this.isUpstreamHelmRepo(this.chart.attributes.repo.URL)) {
+    if (this.isUpstreamHelmRepo(this.chart.attributes.repo.url)) {
       return `https://github.com/${maintainer.name}`;
     } else {
       return `mailto:${maintainer.email}`;
