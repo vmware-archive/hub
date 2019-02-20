@@ -40,8 +40,8 @@ export class ChartItemComponent implements OnInit {
       'star-border',
       this.sanitizer.bypassSecurityTrustResourceUrl('/assets/icons/star-border.svg')
     );
-    this.iconUrl = this.chartsService.getChartIconURL(this.chart)
-;
+    this.iconUrl = this.chartsService.getChartIconURL(this.chart);
+
     if (!this.star) {
       this.star = new Star({id: this.chart.id});
     }
