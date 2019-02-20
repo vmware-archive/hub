@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from '../shared/models/chart';
+import { ChartsService } from '../shared/services/charts.service';
 import { Star } from '../shared/models/rate';
 import { RateService } from '../shared/services/rate.service';
 import { ConfigService } from '../shared/services/config.service';
@@ -24,7 +25,7 @@ export class ChartItemComponent implements OnInit {
   public star: Star;
 
   constructor(
-    private config: ConfigService,
+    private chartsService: ChartsService,
     private rateService: RateService,
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
@@ -39,7 +40,8 @@ export class ChartItemComponent implements OnInit {
       'star-border',
       this.sanitizer.bypassSecurityTrustResourceUrl('/assets/icons/star-border.svg')
     );
-    this.iconUrl = this.getIconUrl();
+    this.iconUrl = this.chartsService.getChartIconURL(this.chart)
+;
     if (!this.star) {
       this.star = new Star({id: this.chart.id});
     }
@@ -52,18 +54,6 @@ export class ChartItemComponent implements OnInit {
 
   goToRepoUrl(): string {
     return `/charts/${this.chart.attributes.repo.name}`;
-  }
-
-  getIconUrl(): string {
-    let icons = this.chart.relationships.latestChartVersion.data.icons;
-    if (icons !== undefined && icons.length > 0) {
-      const icon =
-        this.config.backendHostname +
-        icons.find(icon => icon.name === '160x160-fit').path;
-      return icon;
-    } else {
-      return '/assets/images/placeholder.png';
-    }
   }
 
   toggleStarred(e: any) {

@@ -60,7 +60,7 @@ export class ChartDetailsComponent implements OnInit {
             this.titleVersion = this.currentVersion.attributes.app_version || '';
             this.updateMetaTags();
           });
-        this.iconUrl = this.getIconUrl();
+        this.iconUrl = this.chartsService.getChartIconURL(this.chart)
       });
       this.rateService.getStars().subscribe(stars => this.star = stars[chartId] || new Star({id: chartId}));
     });
@@ -86,17 +86,5 @@ export class ChartDetailsComponent implements OnInit {
 
   goToRepoUrl(): string {
     return `/charts/${this.chart.attributes.repo.name}`;
-  }
-
-  getIconUrl(): string {
-    let icons = this.chart.relationships.latestChartVersion.data.icons;
-    if (icons !== undefined && icons.length > 0) {
-      const icon =
-        this.config.backendHostname +
-        icons.find(icon => icon.name === '160x160-fit').path;
-      return icon;
-    } else {
-      return '/assets/images/placeholder.png';
-    }
   }
 }
