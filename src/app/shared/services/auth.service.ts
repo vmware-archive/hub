@@ -13,7 +13,6 @@ import { Http, Response } from '@angular/http';
 /* TODO, This is a mocked class. */
 @Injectable()
 export class AuthService {
-  hostname: string;
   user: any = {};
 
   constructor(
@@ -22,7 +21,6 @@ export class AuthService {
     private cookieService: CookieService,
     private router: Router,
   ) {
-    this.hostname = config.backendHostname;
   }
 
   /**
@@ -46,7 +44,7 @@ export class AuthService {
    * @return {Observable} An observable boolean that will be true if logged in or if auth is disabled
    */
   loggedIn(): Observable<boolean> {
-    return this.http.get(`${this.hostname}/auth/verify`, {withCredentials: true})
+    return this.http.get('/auth/verify', {withCredentials: true})
       .map((res: Response) => { return res.ok; })
       .catch(res => {
         if (res.status == 404) {
@@ -63,6 +61,6 @@ export class AuthService {
    */
   logout(): Observable<Response> {
     this.cookieService.remove('ka_claims');
-    return this.http.delete(`${this.hostname}/auth/logout`, {withCredentials: true});
+    return this.http.delete('/auth/logout', {withCredentials: true});
   }
 }
