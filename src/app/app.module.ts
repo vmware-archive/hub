@@ -128,6 +128,7 @@ export function metaFactory(): MetaLoader {
     CommentsService,
   ],
   entryComponents: [
+    ConfirmDialog,
   ],
   bootstrap: [AppComponent]
 })
