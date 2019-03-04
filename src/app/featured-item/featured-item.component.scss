@@ -1,0 +1,26 @@
+@import '../../theme.scss';
+
+.subhero {
+  margin-top: -19px;
+  background: $background-light;
+
+  .container {
+    max-width: $layout-max-width;
+    padding: 40px;
+
+  }
+
+  &__content {
+    max-width: $layout-max-width;
+    .row {
+      margin: 0 40px;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+
+  &__logo {
+    margin-top: 20px;
+  }
+}
