@@ -1,22 +1,26 @@
-<section class="subhero">
+<section class="subhero type-color-reverse">
   <div class="container">
     <div class="subhero__content">
-      <h2>Featured</h2>
-      <div class="row">
-        <div class="col-2">
-          <img class="subhero__logo" src="/assets/images/jfrog-artifactory-logo.png" height="96" />
-        </div>
-        <div class="col-10">
-          <p>
+      <h6 class="type-uppercase type-light type-tiny">Featured App</h6>
+      <div class="row margin-reset">
+        <div class="col-6">
+          <h3>JFrog Artifactory</h3>
+          <h6 class="subtitle type-small">Universal Artifact Repository Manager</h6>
+          <p class="type-small">
             JFrog Artifactory Open Source is an open source repository manager.
             JFrog Artifactory was built to tackle some real world problems with
             Maven, and includes features such as fine-grained permissions, LDAP
             integration, advanced artifacts management policies, scheduled backups,
-            auditing, and more. JFrog Artifactory works with Maven, Ivy, and Gradle
-            and supports hosting and remote proxying of artifacts. It integrates
-            with Jenkins, TeamCity, Bamboo and other CI servers.
+            auditing, and more.  
           </p>
-          <a routerLink="/charts/jfrog/artifactory" class="button button-action">Deploy Now</a>
+        </div>
+        <div class="col-6 align-center text-c">
+          <img class="margin-t-giant" src="/assets/images/jfrog-artifactory-logo.png" height="96" />
+        </div>
+        <div class="col-12">
+          <div class="subhero__action margin-t-big margin-b-giant">
+            <a routerLink="/charts/jfrog/artifactory" class="button button-accent button-small">Deploy Now</a>
+          </div>
         </div>
       </div>
     </div>

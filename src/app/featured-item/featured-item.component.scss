@@ -1,26 +1,22 @@
 @import '../../theme.scss';
 
+$featured-background: #053B5D;
+
 .subhero {
   margin-top: -19px;
-  background: $background-light;
+  background: #053B5D;
 
   .container {
     max-width: $layout-max-width;
-    padding: 40px;
-
+    padding: 20px;
+    margin: 0 auto;
   }
 
   &__content {
     max-width: $layout-max-width;
-    .row {
-      margin: 0 40px;
-    }
-    h2 {
-      margin: 0;
-    }
-  }
 
-  &__logo {
-    margin-top: 20px;
+    .subtitle, p {
+      color: $text-light-gray;
+    }
   }
 }
