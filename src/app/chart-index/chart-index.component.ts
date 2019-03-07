@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartsService } from '../shared/services/charts.service';
 import { Chart } from '../shared/models/chart';
 import { SeoService } from '../shared/services/seo.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chart-index',
@@ -9,9 +10,11 @@ import { SeoService } from '../shared/services/seo.service';
   styleUrls: ['./chart-index.component.scss']
 })
 export class ChartIndexComponent implements OnInit {
-	charts: Chart[]
+  charts: Chart[];
   loading: boolean = true;
-  totalChartsNumber: number
+  totalPages: number = 1;
+  page: number = 1;
+  onSelect = (page: number) => this.onSelectPage(page);
 
   constructor(
     private chartsService: ChartsService,
@@ -19,15 +22,21 @@ export class ChartIndexComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-		this.loadCharts();
+    this.loadCharts(this.page);
     this.seo.setMetaTags('index');
   }
 
-  loadCharts(): void {
-		this.chartsService.getCharts().subscribe(charts => {
+  loadCharts(page?: number): void {
+    this.chartsService.getCharts('all', page).subscribe(res => {
       this.loading = false;
-      this.charts = charts;
-      this.totalChartsNumber = charts.length;
+      this.charts = res.charts;
+      this.totalPages = res.meta.totalPages;
     });
+  }
+
+  onSelectPage(page: number) {
+    this.page = page;
+    this.loading = true;
+    this.loadCharts(page);
   }
 }

@@ -14,7 +14,7 @@ import { Http, Response } from '@angular/http';
 @Injectable()
 export class ChartsService {
   hostname: string;
-  cacheCharts: any;
+  cacheCharts: {[repo: string]: {charts: Chart[], meta: any}};
 
   constructor(
     private http: Http,
@@ -24,33 +24,33 @@ export class ChartsService {
     this.cacheCharts = {};
   }
 
+  requestCharts(url: string, cacheKey: string): Observable<{charts: Chart[], meta: any}> {
+    if (this.cacheCharts[cacheKey]) {
+      return Observable.create((observer) => {
+        observer.next(this.cacheCharts[cacheKey]);
+      });
+    } else {
+      return this.http.get(url, {withCredentials: true})
+                    .map((res) => {
+                      const body = res.json();
+                      this.storeCache({charts: body.data, meta: body.meta}, cacheKey);
+                      return {charts: body.data, meta: body.meta};
+                    })
+                    .catch(this.handleError);
+    }
+  }
+
   /**
    * Get all charts from the API
    *
    * @return {Observable} An observable that will an array with all Charts
    */
-  getCharts(repo: string = "all"): Observable<Chart[]> {
-    let url: string
-    switch(repo) {
-      case 'all' : {
-        url = `${this.hostname}/v1/charts`
-        break
-      }
-      default: {
-        url = `${this.hostname}/v1/charts/${repo}`
-      }
-    }
-
-    if (this.cacheCharts[repo] && this.cacheCharts[repo].length > 0) {
-      return Observable.create((observer) => {
-        observer.next(this.cacheCharts[repo]);
-      });
-    } else {
-      return this.http.get(url, {withCredentials: true})
-                    .map(this.extractData)
-                    .do((data) => this.storeCache(data, repo))
-                    .catch(this.handleError);
-    }
+  getCharts(repo: string = 'all', page: number = 1): Observable<{charts: Chart[], meta: any}> {
+    const url = repo === 'all' ?
+      `${this.hostname}/v1/charts?size=36&page=${page}` :
+      `${this.hostname}/v1/charts/${repo}?size=36&page=${page}`;
+    const cacheKey = `${repo}/${page}`;
+    return this.requestCharts(url, cacheKey);
   }
 
   /**
@@ -67,19 +67,12 @@ export class ChartsService {
                   .catch(this.handleError);
   }
 
-  /* TODO, use backend search API endpoint */
   searchCharts(query, repo?: string): Observable<Chart[]> {
-    let re = new RegExp(query, 'i');
-    return this.getCharts(repo).map(charts => {
-      return charts.filter(chart => {
-        return chart.attributes.name.match(re) ||
-         chart.attributes.description.match(re) ||
-         chart.attributes.repo.name.match(re) ||
-         this.arrayMatch(chart.attributes.keywords, re) ||
-         this.arrayMatch((chart.attributes.maintainers || []).map((m)=> { return m.name }), re) ||
-         this.arrayMatch(chart.attributes.sources, re)
-      })
-    })
+    const url = repo ?
+      `${this.hostname}/v1/charts/${repo}/search?match=${query}` :
+      `${this.hostname}/v1/charts/search?match=${query}`;
+    const cacheKey = `${repo}/${query}`;
+    return this.requestCharts(url, cacheKey).map(res => res.charts);
   }
 
   arrayMatch(keywords: string[], re): boolean {
@@ -146,8 +139,8 @@ export class ChartsService {
    * @param {Chart[]} data Elements in the response
    * @return {Chart[]} Return the same response
    */
-  private storeCache(data: Chart[], repo: string): Chart[] {
-    this.cacheCharts[repo] = data;
+  private storeCache(data: {charts: Chart[], meta: any}, key: string): {charts: Chart[], meta?: any} {
+    this.cacheCharts[key] = data;
     return data;
   }
 

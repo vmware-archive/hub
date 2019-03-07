@@ -5,6 +5,7 @@
       <div class="chart-list">
         <app-chart-list [charts]="charts"></app-chart-list>
       </div>
+      <app-pagination [page]="page" [totalPages]="totalPages" [onSelect]="onSelect"></app-pagination>
     </app-loader>
   </app-panel>
 </section>

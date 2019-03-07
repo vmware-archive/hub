@@ -1,0 +1,5 @@
+<nav class="pagination" role="navigation" aria-label="Pagination Navigation">
+  <ul>
+    <app-pagination-item *ngFor="let p of pages" [page]=p [current]="page == p" [onSelect]="onSelect"></app-pagination-item>
+  </ul>
+</nav>

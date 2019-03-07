@@ -23,6 +23,7 @@
             <input type="text" placeholder="Search charts..." value="{{searchTerm}}" (keyup)="searchChange($event)" />
           </div>
           <app-chart-list [charts]="orderedCharts" [maxColumns]="3"></app-chart-list>
+          <app-pagination [page]="page" [totalPages]="totalPages" [onSelect]="onSelect"></app-pagination>
         </div>
       </div>
     </section>

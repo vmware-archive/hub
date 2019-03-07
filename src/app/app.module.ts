@@ -52,6 +52,8 @@ import { ConfirmDialog } from './confirm-dialog/confirm-dialog.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { ListFiltersComponent } from './list-filters/list-filters.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { PaginationItemComponent } from './pagination-item/pagination-item.component';
 
 import 'hammerjs';
 
@@ -90,6 +92,8 @@ export function metaFactory(): MetaLoader {
     ListFiltersComponent,
     ChartDetailsCommentsComponent,
     TermsOfServiceComponent,
+    PaginationComponent,
+    PaginationItemComponent
   ],
   imports: [
     MatIconModule,
