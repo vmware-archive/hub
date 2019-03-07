@@ -35,7 +35,6 @@ import { AppComponent } from './app.component';
 import { ChartIndexComponent } from './chart-index/chart-index.component';
 import { ChartListComponent } from './chart-list/chart-list.component';
 import { ChartItemComponent } from './chart-item/chart-item.component';
-import { FeaturedItemComponent } from './featured-item/featured-item.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ChartDetailsComponent } from './chart-details/chart-details.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
@@ -73,7 +72,6 @@ export function metaFactory(): MetaLoader {
     ChartIndexComponent,
     ChartListComponent,
     ChartItemComponent,
-    FeaturedItemComponent,
     PageNotFoundComponent,
     ChartDetailsComponent,
     HeaderBarComponent,
