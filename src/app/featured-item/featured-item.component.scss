@@ -1,0 +1,32 @@
+@import '../../theme.scss';
+
+$featured-background: #053B5D;
+
+.subhero {
+  margin-top: -19px;
+  background: #053B5D;
+
+  .container {
+    max-width: $layout-max-width;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  &__content {
+    max-width: $layout-max-width;
+
+    &__heading {
+      font-weight: 100;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+    }
+
+    .subtitle, p {
+      color: $text-light-gray;
+    }
+  }
+
+}
