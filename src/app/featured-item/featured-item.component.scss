@@ -15,8 +15,14 @@ $featured-background: #053B5D;
   &__content {
     max-width: $layout-max-width;
 
+    &__heading {
+      font-weight: 100;
+      letter-spacing: 1px;
+    }
+
     .subtitle, p {
       color: $text-light-gray;
     }
   }
+
 }
