@@ -5,12 +5,12 @@ import { Component, Input, OnChanges, SimpleChanges, SimpleChange } from '@angul
   templateUrl: './pagination.component.html'
 })
 export class PaginationComponent implements OnChanges {
-  @Input() totalPages: string;
-  @Input() page: string;
+  @Input() totalPages: number;
+  @Input() page: number;
   @Input() onSelect: (page: string) => void;
-  get pages(): string[] {
+  get pages(): number[] {
     const pages = [];
-    for (let i = 1; i <= parseInt(this.totalPages, 10); i++) {
+    for (let i = 1; i <= this.totalPages; i++) {
       pages.push(i.toString());
     }
     return pages;

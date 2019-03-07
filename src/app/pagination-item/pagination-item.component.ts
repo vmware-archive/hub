@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './pagination-item.component.html'
 })
 export class PaginationItemComponent {
-  @Input() page: string;
+  @Input() page: number;
   @Input() current: boolean;
   @Input() onSelect: (page: string) => void;
 }

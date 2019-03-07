@@ -14,7 +14,7 @@ import { Http, Response } from '@angular/http';
 @Injectable()
 export class ChartsService {
   hostname: string;
-  cacheCharts: {[repo: string]: {charts: Chart[], meta: any}};
+  cacheCharts: {[key: string]: {charts: Chart[], meta: any}};
 
   constructor(
     private http: Http,
@@ -139,7 +139,7 @@ export class ChartsService {
    * @param {Chart[]} data Elements in the response
    * @return {Chart[]} Return the same response
    */
-  private storeCache(data: {charts: Chart[], meta: any}, key: string): {charts: Chart[], meta?: any} {
+  private storeCache(data: {charts: Chart[], meta: any}, key: string): {charts: Chart[], meta: any} {
     this.cacheCharts[key] = data;
     return data;
   }

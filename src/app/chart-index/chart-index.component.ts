@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ChartsService } from '../shared/services/charts.service';
 import { Chart } from '../shared/models/chart';
 import { SeoService } from '../shared/services/seo.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chart-index',
