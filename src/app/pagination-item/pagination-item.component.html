@@ -1,4 +1,3 @@
-<li *ngIf=current class="pagination__current">
-  <a aria-current="true" (click)='onSelect(page)'>{{page}}</a>
+<li [ngClass]="{'pagination__current': current}" (click)='onSelect(page)'>
+  <a [attr.aria-current]="current ? 'true' : null">{{page}}</a>
 </li>
-<li *ngIf="!current" (click)='onSelect(page)'><a >{{page}}</a></li>

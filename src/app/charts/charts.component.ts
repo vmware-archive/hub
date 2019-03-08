@@ -47,7 +47,11 @@ export class ChartsComponent implements OnInit {
 
   totalPages: number = 1;
   page: number = 1;
-  onSelect = (page: number) => this.onSelectPage(page);
+  onSelect = (page: number) => {
+    this.page = page;
+    this.loading = true;
+    this.loadCharts(page);
+  }
 
   constructor(
     private chartsService: ChartsService,
@@ -82,7 +86,10 @@ export class ChartsComponent implements OnInit {
       this.repoName = params['repo'] ? params['repo'] : undefined;
       this.updateMetaTags();
       this.loadRepos();
-      this.loadCharts();
+      if (!this.searchTerm) {
+        // If we have already search some chart, don't reload
+        this.loadCharts();
+      }
     });
   }
 
@@ -193,11 +200,5 @@ export class ChartsComponent implements OnInit {
 
   capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  onSelectPage(page: number) {
-    this.page = page;
-    this.loading = true;
-    this.loadCharts(page);
   }
 }

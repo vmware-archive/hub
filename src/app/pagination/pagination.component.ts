@@ -1,25 +1,32 @@
-import { Component, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html'
 })
-export class PaginationComponent implements OnChanges {
+export class PaginationComponent implements OnInit, OnChanges {
   @Input() totalPages: number;
   @Input() page: number;
   @Input() onSelect: (page: string) => void;
-  get pages(): number[] {
-    const pages = [];
-    for (let i = 1; i <= this.totalPages; i++) {
-      pages.push(i.toString());
-    }
-    return pages;
+  pages: number[];
+
+  ngOnInit()  {
+    this.getPages();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     const totalPages: SimpleChange = changes.totalPages;
     if (totalPages) {
       this.totalPages = totalPages.currentValue;
+      this.getPages();
     }
+  }
+
+  getPages() {
+    this.pages = [];
+    for (let i = 1; i <= this.totalPages; i++) {
+      this.pages.push(i);
+    }
+    return this.pages;
   }
 }

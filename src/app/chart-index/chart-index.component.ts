@@ -13,7 +13,11 @@ export class ChartIndexComponent implements OnInit {
   loading: boolean = true;
   totalPages: number = 1;
   page: number = 1;
-  onSelect = (page: number) => this.onSelectPage(page);
+  onSelect = (page: number) => {
+    this.page = page;
+    this.loading = true;
+    this.loadCharts(page);
+  }
 
   constructor(
     private chartsService: ChartsService,
@@ -33,9 +37,4 @@ export class ChartIndexComponent implements OnInit {
     });
   }
 
-  onSelectPage(page: number) {
-    this.page = page;
-    this.loading = true;
-    this.loadCharts(page);
-  }
 }

@@ -69,8 +69,8 @@ export class ChartsService {
 
   searchCharts(query, repo?: string): Observable<Chart[]> {
     const url = repo ?
-      `${this.hostname}/v1/charts/${repo}/search?match=${query}` :
-      `${this.hostname}/v1/charts/search?match=${query}`;
+      `${this.hostname}/v1/charts/${repo}/search?q=${query}` :
+      `${this.hostname}/v1/charts/search?q=${query}`;
     const cacheKey = `${repo}/${query}`;
     return this.requestCharts(url, cacheKey).map(res => res.charts);
   }
