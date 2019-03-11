@@ -3,13 +3,17 @@
 $featured-background: #053B5D;
 
 .subhero {
-  margin-top: -19px;
+  margin-top: -40px;
   background: #053B5D;
 
   .container {
     max-width: $layout-max-width;
     padding: 20px;
     margin: 0 auto;
+
+    .row {
+      margin-top: 0;
+    }
   }
 
   &__content {
