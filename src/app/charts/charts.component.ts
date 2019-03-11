@@ -45,13 +45,8 @@ export class ChartsComponent implements OnInit {
   // Repos
   repoName: string;
 
-  totalPages: number = 1;
+  totalPages: number = 0;
   page: number = 1;
-  onSelect = (page: number) => {
-    this.page = page;
-    this.loading = true;
-    this.loadCharts(page);
-  }
 
   constructor(
     private chartsService: ChartsService,
@@ -97,7 +92,7 @@ export class ChartsComponent implements OnInit {
     this.chartsService.getCharts(this.repoName, page).subscribe(res => {
       this.loading = false;
       this.charts = res.charts;
-      this.totalPages = res.meta.totalPages;
+      this.totalPages = res.meta && res.meta.totalPages;
       if (!this.searchTerm) {
         this.orderedCharts = this.orderCharts(this.charts);
       }
@@ -200,5 +195,11 @@ export class ChartsComponent implements OnInit {
 
   capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  onSelect = (page: number) => {
+    this.page = page;
+    this.loading = true;
+    this.loadCharts(page);
   }
 }

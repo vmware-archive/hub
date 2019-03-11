@@ -11,13 +11,8 @@ import { SeoService } from '../shared/services/seo.service';
 export class ChartIndexComponent implements OnInit {
   charts: Chart[];
   loading: boolean = true;
-  totalPages: number = 1;
+  totalPages: number = 0;
   page: number = 1;
-  onSelect = (page: number) => {
-    this.page = page;
-    this.loading = true;
-    this.loadCharts(page);
-  }
 
   constructor(
     private chartsService: ChartsService,
@@ -33,8 +28,13 @@ export class ChartIndexComponent implements OnInit {
     this.chartsService.getCharts('all', page).subscribe(res => {
       this.loading = false;
       this.charts = res.charts;
-      this.totalPages = res.meta.totalPages;
+      this.totalPages = res.meta && res.meta.totalPages;
     });
   }
 
+  onSelect = (page: number) => {
+    this.page = page;
+    this.loading = true;
+    this.loadCharts(page);
+  }
 }
