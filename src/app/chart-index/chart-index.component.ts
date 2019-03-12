@@ -36,5 +36,5 @@ export class ChartIndexComponent implements OnInit {
     this.page = page;
     this.loading = true;
     this.loadCharts(page);
-  }
+  };
 }
