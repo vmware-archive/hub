@@ -45,6 +45,9 @@ export class ChartsComponent implements OnInit {
   // Repos
   repoName: string;
 
+  totalPages: number = 0;
+  page: number = 1;
+
   constructor(
     private chartsService: ChartsService,
     private reposService: ReposService,
@@ -78,14 +81,18 @@ export class ChartsComponent implements OnInit {
       this.repoName = params['repo'] ? params['repo'] : undefined;
       this.updateMetaTags();
       this.loadRepos();
-      this.loadCharts();
+      if (!this.searchTerm) {
+        // If we have already search some chart, don't reload
+        this.loadCharts();
+      }
     });
   }
 
-  loadCharts(): void {
-    this.chartsService.getCharts(this.repoName).subscribe(charts => {
+  loadCharts(page?: number): void {
+    this.chartsService.getCharts(this.repoName, page).subscribe(res => {
       this.loading = false;
-      this.charts = charts;
+      this.charts = res.charts;
+      this.totalPages = res.meta && res.meta.totalPages;
       if (!this.searchTerm) {
         this.orderedCharts = this.orderCharts(this.charts);
       }
@@ -129,7 +136,9 @@ export class ChartsComponent implements OnInit {
     this.searchTerm = e.target.value;
     clearTimeout(this.searchTimeout);
     if (!this.searchTerm) {
-      return (this.orderedCharts = this.orderCharts(this.charts));
+      // Reload state before search
+      this.loadCharts(this.page);
+      return;
     }
     this.searchTimeout = setTimeout(() => this.searchCharts(), 1000);
   }
@@ -144,6 +153,8 @@ export class ChartsComponent implements OnInit {
       .subscribe(charts => {
         this.loading = false;
         this.orderedCharts = this.orderCharts(charts);
+        // Remove pagination when doing a search
+        this.totalPages = 0;
       });
   }
 
@@ -184,5 +195,11 @@ export class ChartsComponent implements OnInit {
 
   capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  onSelect = (page: number) => {
+    this.page = page;
+    this.loading = true;
+    this.loadCharts(page);
   }
 }

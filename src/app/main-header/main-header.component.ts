@@ -8,7 +8,6 @@ import { Router, NavigationExtras } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class MainHeaderComponent implements OnInit {
-  @Input() totalChartsNumber: number
   // Store the router
   constructor(private router: Router) { }
   ngOnInit() { }

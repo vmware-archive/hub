@@ -1,0 +1,3 @@
+<li [ngClass]="{'pagination__current': current}" (click)='onSelect(page)'>
+  <a [attr.aria-current]="current ? 'true' : null">{{page}}</a>
+</li>
