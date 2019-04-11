@@ -1,58 +1,13 @@
-[![CircleCI](https://circleci.com/gh/kubeapps/hub.svg?style=svg)](https://circleci.com/gh/kubeapps/hub)
+# Kubeapps Hub Issues
 
-# Monocular UI
+## Overview
 
-The UI is a web client for the [Monocular
-API](https://github.com/kubernetes-helm/monocular/tree/master/src/api), which exposes an easy way to
-navigate and search [Helm Charts](https://github.com/kubernetes/charts).
+This repository is used to track issues and feature requests for [Kubeapps
+Hub](https://hub.kubeapps.com).
 
-Features of the UI includes:
+## Submitting your own repository
 
-* Listing of available charts from multiple repositories.
-* Search charts by name, keywords, maintainer, etc.
-* View chart information, e.g. installation notes, usage, versions.
-* Install charts in the cluster
-* Add and manage indexed chart repositories
-
-## Developers
-
-### Running Monocular UI
-
-Monocular UI requires a running instance of the Monocular backend.
-
-The easiest way to have a running multi-tier development environment is to use the the `docker-compose.yml` file placed at the project root directory.
-
-Refer to [the Developer Guide](https://github.com/kubeapps/hub/blob/master/docs/development.md) for more details.
-
-### Stack
-
-The web application is based on the components listed below.
-
-* [Angular 2](https://angular.io/)
-* [angular/cli](https://github.com/angular/angular-cli)
-* Typescript
-* Sass
-* [Webpack](https://webpack.github.io/)
-* Bootstrap
-
-### Building
-
-`Makefile` provides a convenience for building locally:
-
-- `make compile-aot`
-
-The resulting compiled static Angular application will be placed inside `rootfs/dist`, which is coincidentally where `rootfs/Dockerfile` expects to find it.
-
-### Building Docker Images
-
-To build a docker image locally:
-
-- `make docker-build`
-
-The image will be tagged as `kubeapps/hub:latest` by default. Set `IMAGE_REPO` and `IMAGE_TAG` to override this.
-
-### Components tree
-
-See below a representation of the implemented Angular components tree.
-
-![components tree](https://cloud.githubusercontent.com/assets/24523/23182395/3ff0382a-f82d-11e6-9b64-2b8b0a9e45e9.png)
+Please see [this page](https://hub.kubeapps.com/submit-repository) to learn how
+to submit a repository for inclusion on Kubeapps Hub. Please use the form linked
+from that page to submit a repository for review instead of creating an issue
+here.
